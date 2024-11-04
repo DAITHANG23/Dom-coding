@@ -92,9 +92,19 @@ export default {
   },
   text: {
     primary: Colors.grey900,
-    secondary: Colors.grey800,
+    secondary: Colors.black,
   },
   action: {
     disabledBackground: Colors.ghostDisabled,
+  },
+
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 1025,
+      lg: 1280,
+      xl: 1920,
+    },
   },
 } as PaletteOptions;
