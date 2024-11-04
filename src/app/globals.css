@@ -10,3 +10,65 @@ h5 {
 p {
   font-family: var(--font-inter);
 }
+
+.container {
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+  max-width: 740px;
+}
+
+.overflow-x-scroll {
+  overflow-x: scroll;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+
+.scrolling-touch {
+  -webkit-overflow-scrolling: touch;
+}
+
+.scrolling-auto {
+  -webkit-overflow-scrolling: auto;
+}
+
+.overscroll-auto {
+  -ms-scroll-chaining: chained;
+  overscroll-behavior: auto;
+}
+
+.overscroll-contain {
+  -ms-scroll-chaining: none;
+  overscroll-behavior: contain;
+}
+
+.overscroll-none {
+  -ms-scroll-chaining: none;
+  overscroll-behavior: none;
+}
+
+.overscroll-y-auto {
+  overscroll-behavior-y: auto;
+}
+
+.overscroll-y-contain {
+  overscroll-behavior-y: contain;
+}
+
+.overscroll-y-none {
+  overscroll-behavior-y: none;
+}
+
+.overscroll-x-auto {
+  overscroll-behavior-x: auto;
+}
+
+.overscroll-x-contain {
+  overscroll-behavior-x: contain;
+}
+
+.overscroll-x-none {
+  overscroll-behavior-x: none;
+}
