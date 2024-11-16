@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { inter, red_hat_display } from "./fonts";
-import Header from "@/component/Header/Header";
-import Footer from "@/component/Footer/Footer";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
+import InitColorSchemeScript from "@mui/material/InitColorSchemeScript";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "@/theme/theme";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { CssBaseline } from "@mui/material";
-
+import Footer from "@/component/Footer/Footer";
+import dynamic from "next/dynamic";
 export const metadata: Metadata = {
   title: "Dom Coding",
 };
@@ -17,10 +17,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const Header = dynamic(() => import("@/component/Header/Header"), {
+    ssr: false,
+  });
   return (
-    <html lang="en" className={`${inter.variable} ${red_hat_display.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${red_hat_display.variable}`}
+      suppressHydrationWarning
+    >
       <body className="container">
-        <AppRouterCacheProvider>
+        <AppRouterCacheProvider options={{ enableCssLayer: false }}>
+          <InitColorSchemeScript attribute="class" />
           <ThemeProvider theme={theme}>
             <CssBaseline enableColorScheme />
             <Header />

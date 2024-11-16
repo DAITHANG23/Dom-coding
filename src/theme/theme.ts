@@ -3,15 +3,25 @@
 import { createTheme } from "@mui/material/styles";
 import Typography from "./__Elements/__Theme.Typography";
 import Palette from "./__Elements/__Theme.Palette";
+import DarkPalette from "./__Elements/__Theme.Palette_Dark";
 import VariantTypographyMapping from "./__Elements/__Theme.VariantTypographyMapping";
 
-export const TraceabilityThemeOptions = {
+export const BlogThemeOptions = {
   palette: Palette,
   typography: Typography,
   components: VariantTypographyMapping,
+  cssVariables: {
+    colorSchemeSelector: "class",
+    disableCssColorScheme: true,
+  },
   colorSchemes: {
-    dark: true,
+    light: {
+      palette: Palette,
+    },
+    dark: {
+      palette: DarkPalette,
+    },
   },
 };
 
-export const theme = createTheme(TraceabilityThemeOptions);
+export const theme = createTheme(BlogThemeOptions);
