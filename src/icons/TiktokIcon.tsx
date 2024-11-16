@@ -5,9 +5,9 @@ const TiktokIcon = () => {
     <svg
       stroke="currentColor"
       fill="currentColor"
-      stroke-width="0"
+      strokeWidth="0"
       viewBox="0 0 1024 1024"
-      fill-rule="evenodd"
+      fillRule="evenodd"
       height="24"
       width="24"
       xmlns="http://www.w3.org/2000/svg"

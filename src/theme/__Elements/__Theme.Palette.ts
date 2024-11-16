@@ -3,6 +3,7 @@ import { PaletteOptions } from "@mui/material/styles/createPalette";
 import * as Colors from "@/contant/__Theme.Color";
 
 export default {
+  mode: "light",
   common: {
     black: Colors.black,
     white: Colors.white,
