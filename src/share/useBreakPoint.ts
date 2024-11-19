@@ -6,7 +6,7 @@ const useBreakpoints = () => {
 
   const isMobileSize = useMediaQuery(theme.breakpoints.only("xs"));
 
-  const isTabletSize = useMediaQuery(theme.breakpoints.only("sm"));
+  const isTabletSize = useMediaQuery(theme.breakpoints.down("sm"));
 
   const isDesktopSize = useMediaQuery(theme.breakpoints.up("md"));
 

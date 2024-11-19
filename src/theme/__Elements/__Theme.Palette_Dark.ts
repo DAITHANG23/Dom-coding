@@ -15,7 +15,7 @@ export default {
     selected: Colors.selected,
   },
   primary: {
-    main: Colors.primary,
+    main: "#5BE49B",
     "400": Colors.p400,
     "300": Colors.p300,
     "200": Colors.p200,
@@ -77,7 +77,7 @@ export default {
     "10": Colors.w10,
   },
   background: {
-    default: Colors.black,
+    default: "#212737",
     link: Colors.link,
     black: Colors.black,
   },
@@ -102,7 +102,7 @@ export default {
   breakpoints: {
     values: {
       xs: 0,
-      sm: 600,
+      sm: 768,
       md: 1025,
       lg: 1280,
       xl: 1920,

@@ -85,7 +85,7 @@ export const StyledTitle = styled(Typography)(({ theme }) => ({
 }));
 export const StyledDivider = styled(Divider)(({ theme }) => ({
   ...theme.applyStyles("dark", {
-    borderColor: "#006CAC",
+    borderColor: theme.palette.primary.main,
   }),
 }));
 export const StyledBoxIcon = styled(Box)(({ theme }) => ({

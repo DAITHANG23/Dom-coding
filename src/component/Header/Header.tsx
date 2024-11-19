@@ -1,6 +1,6 @@
 "use client";
 import SearchIcon from "@/icons/SearchIcon";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
   StyledBoxContainer,
   StyledBoxIcon,
@@ -35,13 +35,16 @@ import MenuICon from "@/icons/MenuICon";
 import HomeIcon from "@/icons/HomeIcon";
 import BackIcon from "@/icons/BackIcon";
 import { usePathname } from "next/navigation";
-import dynamic from "next/dynamic";
+import SunIcon from "@/icons/SunIcon";
+
 const Header = () => {
   const { setMode } = useColorScheme();
 
-  const SunIcon = dynamic(() => import("@/icons/SunIcon"), { ssr: false });
-
   const router = useRouter();
+
+  const pathname = usePathname();
+
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
     if (
@@ -60,13 +63,35 @@ const Header = () => {
     }
   }, [isDarkMode, setMode]);
 
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  const pathname = usePathname();
-
   const valuePathName = pathname ? pathname?.split("/")[1] : "";
 
   const [valueTab, setValueTab] = useState(valuePathName);
+
+  const divRef = useRef<HTMLDivElement>(null);
+
+  const handleDrawerToggle = useCallback(() => {
+    setMobileOpen((prevState) => !prevState);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      let width;
+      if (divRef.current) {
+        width = divRef.current.offsetWidth;
+      }
+
+      if (!!width && width === 740) {
+        setMobileOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const onClickDarkMode = () => {
     setIsDarkMode((prev) => !prev);
@@ -84,10 +109,6 @@ const Header = () => {
     if (!value) setValueTab("");
 
     setValueTab(value.toLowerCase());
-  };
-
-  const handleDrawerToggle = () => {
-    setMobileOpen((prevState) => !prevState);
   };
 
   const container =
@@ -150,7 +171,7 @@ const Header = () => {
   );
 
   return (
-    <Box>
+    <Box ref={divRef}>
       <StyledBoxContainer>
         <div>
           <StyledLink
@@ -192,6 +213,7 @@ const Header = () => {
           <MenuICon />
         </StyledMenu>
       </StyledBoxContainer>
+
       <nav>
         <StyledDrawer
           container={container}
@@ -206,6 +228,7 @@ const Header = () => {
           {drawer}
         </StyledDrawer>
       </nav>
+
       <StyledDivider variant="middle" />
     </Box>
   );
