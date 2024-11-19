@@ -1,4 +1,5 @@
-import { Divider, styled } from "@mui/material";
+import { MobilePortraitRule } from "@/utils/BreakPointMedia";
+import { Box, Divider, styled } from "@mui/material";
 import Link from "next/link";
 
 export const StyledLinkIcon = styled(Link)(({ theme }) => ({
@@ -15,6 +16,19 @@ export const StyledLinkIcon = styled(Link)(({ theme }) => ({
 }));
 export const StyledDivider = styled(Divider)(({ theme }) => ({
   ...theme.applyStyles("dark", {
-    borderColor: "#006CAC",
+    borderColor: theme.palette.primary.main,
   }),
+}));
+
+export const StyledBoxContainer = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(4, 3),
+  display: "flex",
+  justifyContent: "space-between",
+
+  [MobilePortraitRule]: {
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "16px",
+  },
 }));
