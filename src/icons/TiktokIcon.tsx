@@ -1,6 +1,6 @@
 import React from "react";
 
-const TiktokIcon = () => {
+const TiktokIcon = ({ isTabletSize }: { isTabletSize?: boolean }) => {
   return (
     <svg
       stroke="currentColor"
@@ -8,8 +8,8 @@ const TiktokIcon = () => {
       strokeWidth="0"
       viewBox="0 0 1024 1024"
       fillRule="evenodd"
-      height="24"
-      width="24"
+      height={isTabletSize ? "30" : "24"}
+      width={isTabletSize ? "30" : "24"}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
