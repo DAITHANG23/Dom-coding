@@ -1,10 +1,9 @@
 import { MobilePortraitRule } from "@/utils/BreakPointMedia";
-import { Box, Divider, styled } from "@mui/material";
+import { Box, Divider, styled, Typography } from "@mui/material";
 import Link from "next/link";
 
 export const StyledLinkIcon = styled(Link)(({ theme }) => ({
   color: theme.palette.common.black,
-  paddingRight: "10px",
   cursor: "pointer",
   "&:hover": {
     color: theme.palette.primary.main,
@@ -31,4 +30,19 @@ export const StyledBoxContainer = styled(Box)(({ theme }) => ({
     alignItems: "center",
     gap: "16px",
   },
+}));
+
+export const StyledBoxContacts = styled(Box)(() => ({
+  display: "flex",
+  gap: "16px",
+}));
+
+export const StyledBoxContent = styled(Box)(() => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: "6px",
+}));
+
+export const StyledTypography = styled(Typography)(() => ({
+  fontSize: "16px",
 }));
