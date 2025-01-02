@@ -5,6 +5,7 @@ import {
   StyledBoxContainer,
   StyledBoxIcon,
   StyledBoxMoonIcon,
+  StyledButtonDarkMode,
   StyledDarkIcon,
   StyledDivider,
   StyledDrawer,
@@ -21,7 +22,6 @@ import {
 } from "./Header.styles";
 import {
   Box,
-  Button,
   Divider,
   List,
   ListItem,
@@ -124,9 +124,9 @@ const Header = () => {
             setMobileOpen((prevState) => !prevState);
           }}
         >
-          <Button variant="contained">
+          <StyledButtonDarkMode variant="contained">
             <HomeIcon />
-          </Button>
+          </StyledButtonDarkMode>
         </StyledLink>
       </Box>
       <Divider />
@@ -163,9 +163,9 @@ const Header = () => {
       </StyledBoxIcon>
       <Divider />
       <Box my={2}>
-        <Button onClick={handleDrawerToggle} variant="contained">
+        <StyledButtonDarkMode onClick={handleDrawerToggle} variant="contained">
           <BackIcon />
-        </Button>
+        </StyledButtonDarkMode>
       </Box>
     </Box>
   );

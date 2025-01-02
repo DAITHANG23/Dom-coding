@@ -5,6 +5,7 @@ export const ghostWhite = "#F5F5FE";
 export const hover = "#F1F8FF";
 export const selected = "#F1F8FF";
 export const link = "#3870FF";
+export const darkBackground = "#212737";
 
 export const white = "#FFF";
 export const black = "#16171C";
