@@ -1,6 +1,7 @@
 import { MobileRule } from "@/utils/BreakPointMedia";
 import {
   Box,
+  Button,
   Divider,
   Drawer,
   ListItemText,
@@ -116,11 +117,20 @@ export const StyledMenu = styled(Box)(() => ({
   },
   display: "none",
 }));
-export const StyledDrawer = styled(Drawer)(() => ({
+export const StyledDrawer = styled(Drawer)(({ theme }) => ({
   [MobileRule]: {
     display: "block",
   },
-  "& .MuiDrawer-paper": { boxSizing: "border-box", width: 240 },
+
+  "& .MuiDrawer-paper": {
+    boxSizing: "border-box",
+    width: 240,
+
+    ...theme.applyStyles("dark", {
+      backgroundColor: "#212737",
+      backgroundImage: "none",
+    }),
+  },
   position: "relative",
 }));
 export const StyledListItemText = styled(ListItemText)<{
@@ -140,4 +150,9 @@ export const StyledListItemText = styled(ListItemText)<{
   "& .MuiTypography-root": {
     fontWeight: ischoosetab === "true" ? "600" : "none",
   },
+}));
+export const StyledButtonDarkMode = styled(Button)(({ theme }) => ({
+  ...theme.applyStyles("dark", {
+    color: theme.palette.common.white,
+  }),
 }));

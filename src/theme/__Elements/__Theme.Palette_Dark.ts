@@ -77,7 +77,7 @@ export default {
     "10": Colors.w10,
   },
   background: {
-    default: "#212737",
+    default: Colors.darkBackground,
     link: Colors.link,
     black: Colors.black,
   },
