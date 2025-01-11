@@ -57,8 +57,8 @@ export default (palette: Palette): MuiTypographyOptions => ({
   bodyS: {
     fontStyle: "normal",
     fontWeight: "normal",
-    fontSize: "14px",
-    lineHeight: "20px",
+    fontSize: "16px",
+    lineHeight: "24px",
     letterSpacing: "-0.01em",
   },
   bodySB: {

@@ -2,7 +2,6 @@ import { MobileRule } from "@/utils/BreakPointMedia";
 import {
   Box,
   Button,
-  Divider,
   Drawer,
   ListItemText,
   styled,
@@ -11,6 +10,24 @@ import {
   Typography,
 } from "@mui/material";
 import Link from "next/link";
+
+export const StyledBox = styled(Box)<{ fixedHeaderBackground: boolean }>(
+  ({ theme, fixedHeaderBackground }) => ({
+    position: "fixed",
+    backgroundColor: fixedHeaderBackground
+      ? "rgba(255, 255, 255, 0.8)"
+      : theme.palette.common.white,
+    maxWidth: 740,
+    minWidth: 330,
+    width: "100%",
+    zIndex: 100,
+    ...theme.applyStyles("dark", {
+      backgroundColor: fixedHeaderBackground
+        ? "hsla(226, 24%, 17%,0.7)"
+        : theme.palette.background.default,
+    }),
+  })
+);
 
 export const StyledBoxContainer = styled(Box)(({ theme }) => ({
   padding: theme.spacing(4, 2, 2),
@@ -84,11 +101,7 @@ export const StyledTitle = styled(Typography)(({ theme }) => ({
     color: theme.palette.common.white,
   }),
 }));
-export const StyledDivider = styled(Divider)(({ theme }) => ({
-  ...theme.applyStyles("dark", {
-    borderColor: theme.palette.primary.main,
-  }),
-}));
+
 export const StyledBoxIcon = styled(Box)(({ theme }) => ({
   cursor: "pointer",
   margin: theme.spacing(2, 0),

@@ -5,7 +5,7 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import InitColorSchemeScript from "@mui/material/InitColorSchemeScript";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "@/theme/theme";
-import { CssBaseline } from "@mui/material";
+import { Box, CssBaseline } from "@mui/material";
 import Footer from "@/component/Footer/Footer";
 import dynamic from "next/dynamic";
 export const metadata: Metadata = {
@@ -32,7 +32,7 @@ export default function RootLayout({
           <ThemeProvider theme={theme}>
             <CssBaseline enableColorScheme />
             <Header />
-            {children}
+            <Box sx={{ paddingTop: "120px" }}> {children}</Box>
             <Footer />
           </ThemeProvider>
         </AppRouterCacheProvider>
