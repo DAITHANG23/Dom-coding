@@ -7,7 +7,6 @@ import {
   StyledBoxMoonIcon,
   StyledButtonDarkMode,
   StyledDarkIcon,
-  StyledDivider,
   StyledDrawer,
   StyledItemList,
   StyledLink,
@@ -19,6 +18,7 @@ import {
   StyledTab,
   StyledTabs,
   StyledTitle,
+  StyledBox,
 } from "./Header.styles";
 import {
   Box,
@@ -36,6 +36,7 @@ import HomeIcon from "@/icons/HomeIcon";
 import BackIcon from "@/icons/BackIcon";
 import { usePathname } from "next/navigation";
 import SunIcon from "@/icons/SunIcon";
+import DividerComponent from "@/share/components/Divivder/Divider";
 
 const Header = () => {
   const { setMode } = useColorScheme();
@@ -45,6 +46,8 @@ const Header = () => {
   const pathname = usePathname();
 
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const [fixedHeaderBackground, setFixedHeaderBackground] = useState(false);
 
   const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
     if (
@@ -90,6 +93,18 @@ const Header = () => {
 
     return () => {
       window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleSroll = () => {
+      if (window.scrollY && window.scrollY > 64) setFixedHeaderBackground(true);
+      else setFixedHeaderBackground(false);
+    };
+    window.addEventListener("scroll", handleSroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleSroll);
     };
   }, []);
 
@@ -171,7 +186,7 @@ const Header = () => {
   );
 
   return (
-    <Box ref={divRef}>
+    <StyledBox ref={divRef} fixedHeaderBackground={fixedHeaderBackground}>
       <StyledBoxContainer>
         <div>
           <StyledLink
@@ -229,8 +244,8 @@ const Header = () => {
         </StyledDrawer>
       </nav>
 
-      <StyledDivider variant="middle" />
-    </Box>
+      <DividerComponent />
+    </StyledBox>
   );
 };
 

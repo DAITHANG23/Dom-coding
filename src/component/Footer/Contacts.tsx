@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { StyledBoxContacts, StyledLinkIcon } from "./Footer.styles";
 import GitHubIcon from "@/icons/GitHubIcon";
