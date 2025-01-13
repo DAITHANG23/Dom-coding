@@ -49,7 +49,7 @@ export default (palette: Palette): MuiTypographyOptions => ({
   },
   bodyL: {
     fontStyle: "normal",
-    fontWeight: "normal",
+    fontWeight: "bold",
     fontSize: "28px",
     lineHeight: "42px",
     letterSpacing: "-0.01em",
@@ -99,7 +99,7 @@ export default (palette: Palette): MuiTypographyOptions => ({
   bodyXXSM: {
     fontStyle: "normal",
     fontWeight: 500,
-    fontSize: "12px",
+    fontSize: "14px",
     lineHeight: "18px",
     letterSpacing: "-0.02em",
   },

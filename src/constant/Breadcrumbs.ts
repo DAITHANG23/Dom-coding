@@ -1,0 +1,37 @@
+import { BreadcrumbsMap } from "@/types/Header.types";
+import * as feature from "@/constant/Features";
+
+const breadcrumbsMap: BreadcrumbsMap = {
+  [feature.HOME]: {
+    name: feature.HOME,
+    heading: "Home",
+    url: "/",
+    icon: null,
+  },
+  [feature.POSTS]: {
+    name: feature.POSTS,
+    heading: "Posts",
+    url: "/posts",
+    parent: feature.HOME,
+  },
+  [feature.TAGS]: {
+    name: feature.TAGS,
+    heading: "Tags",
+    url: "/tags",
+    parent: feature.HOME,
+  },
+  [feature.ABOUT]: {
+    name: feature.ABOUT,
+    heading: "About",
+    url: "/about",
+    parent: feature.HOME,
+  },
+  [feature.SEARCH]: {
+    name: feature.SEARCH,
+    heading: "Search",
+    url: "/search",
+    parent: feature.HOME,
+  },
+};
+
+export default breadcrumbsMap;

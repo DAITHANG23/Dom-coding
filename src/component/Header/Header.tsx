@@ -1,6 +1,12 @@
 "use client";
 import SearchIcon from "@/icons/SearchIcon";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import {
   StyledBoxContainer,
   StyledBoxIcon,
@@ -29,7 +35,7 @@ import {
   useColorScheme,
 } from "@mui/material";
 import MoonIcon from "@/icons/MoonIcon";
-import { LIST_ITEM_NAVBAR } from "@/contant/constants";
+import { LIST_ITEM_NAVBAR } from "@/constant/constants";
 import { useRouter } from "next/navigation";
 import MenuICon from "@/icons/MenuICon";
 import HomeIcon from "@/icons/HomeIcon";
@@ -66,9 +72,15 @@ const Header = () => {
     }
   }, [isDarkMode, setMode]);
 
-  const valuePathName = pathname ? pathname?.split("/")[1] : "";
+  const valuePathName = useMemo(() => {
+    return pathname !== "/" ? pathname?.split("/")[1] : pathname;
+  }, [pathname]);
 
   const [valueTab, setValueTab] = useState(valuePathName);
+
+  useEffect(() => {
+    if (valuePathName) setValueTab(valuePathName);
+  }, [valuePathName]);
 
   const divRef = useRef<HTMLDivElement>(null);
 
@@ -244,7 +256,7 @@ const Header = () => {
         </StyledDrawer>
       </nav>
 
-      <DividerComponent />
+      {!fixedHeaderBackground && <DividerComponent />}
     </StyledBox>
   );
 };

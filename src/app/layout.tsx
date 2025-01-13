@@ -8,6 +8,7 @@ import { theme } from "@/theme/theme";
 import { Box, CssBaseline } from "@mui/material";
 import Footer from "@/component/Footer/Footer";
 import dynamic from "next/dynamic";
+import BreadcrumbsComponent from "@/share/components/Breadcrumbs/Breadcrumbs";
 export const metadata: Metadata = {
   title: "Dom Coding",
 };
@@ -32,7 +33,8 @@ export default function RootLayout({
           <ThemeProvider theme={theme}>
             <CssBaseline enableColorScheme />
             <Header />
-            <Box sx={{ paddingTop: "120px" }}> {children}</Box>
+            <BreadcrumbsComponent />
+            <Box>{children}</Box>
             <Footer />
           </ThemeProvider>
         </AppRouterCacheProvider>

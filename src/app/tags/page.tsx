@@ -1,7 +1,17 @@
+import { Box } from "@mui/material";
 import React from "react";
 
 const Tags = () => {
-  return <div style={{ height: "100vh", padding: "32px 16px" }}>Tags</div>;
+  return (
+    <Box
+      sx={{
+        height: "100vh",
+        padding: "16px",
+      }}
+    >
+      Tags
+    </Box>
+  );
 };
 
 export default Tags;
