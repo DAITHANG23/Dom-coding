@@ -1,7 +1,17 @@
 import React from "react";
+import { Box } from "@mui/material";
 
 const Posts = async () => {
-  return <div style={{ height: "100vh", padding: "32px 16px" }}>Posts</div>;
+  return (
+    <Box
+      sx={{
+        height: "100vh",
+        padding: "16px",
+      }}
+    >
+      Posts
+    </Box>
+  );
 };
 
 export default Posts;

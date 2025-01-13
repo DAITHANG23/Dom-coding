@@ -1,7 +1,17 @@
+import { Box } from "@mui/material";
 import React from "react";
 
 const Search = () => {
-  return <div style={{ height: "100vh", padding: "32px 16px" }}>Search</div>;
+  return (
+    <Box
+      sx={{
+        height: "100vh",
+        padding: "16px",
+      }}
+    >
+      Search
+    </Box>
+  );
 };
 
 export default Search;

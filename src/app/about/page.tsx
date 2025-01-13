@@ -6,7 +6,7 @@ const About = () => {
     <div
       style={{
         height: "100vh",
-        padding: "32px 16px",
+        padding: "16px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
