@@ -1,16 +1,11 @@
 import React from "react";
-import { Box } from "@mui/material";
+import WarraperComponent from "@/share/components/WarraperComponent/WarraperComponent";
 
 const Posts = async () => {
   return (
-    <Box
-      sx={{
-        height: "100vh",
-        padding: "16px",
-      }}
-    >
-      Posts
-    </Box>
+    <WarraperComponent>
+      <p>Posts</p>
+    </WarraperComponent>
   );
 };
 

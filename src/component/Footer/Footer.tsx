@@ -10,7 +10,7 @@ import {
 } from "./Footer.styles";
 
 import useBreakpoints from "@/share/useBreakPoint";
-import Contacts from "./Contacts";
+import Contacts from "../../share/components/Contacts/Contacts";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -38,7 +38,7 @@ const Footer = () => {
                 Coppyright © {`${currentYear}`} | All rights reserved.
               </Typography>
             </Box>
-            <Contacts />
+            <Contacts isSmallSize />
           </>
         )}
       </StyledBoxContainer>

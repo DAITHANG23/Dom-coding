@@ -1,19 +1,23 @@
 /* eslint-disable @next/next/no-img-element */
+"use client";
+import WarraperComponent from "@/share/components/WarraperComponent/WarraperComponent";
+import { makeStyles } from "@mui/styles";
 import React from "react";
 
+const useStyles = makeStyles(() => ({
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+  },
+}));
+
 const About = () => {
+  const classes = useStyles();
   return (
-    <div
-      style={{
-        height: "100vh",
-        padding: "16px",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        textAlign: "center",
-      }}
-    >
+    <WarraperComponent className={classes.container}>
       <img
         src="https://via.placeholder.com/150"
         alt="Avatar"
@@ -35,7 +39,7 @@ const About = () => {
         teaching/tutoring, volunteering, etc.].
       </p>
       <p>Thank you for taking the time to learn more about me.</p>
-    </div>
+    </WarraperComponent>
   );
 };
 
