@@ -3,7 +3,9 @@
 import { Box, styled, Typography } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import DividerComponent from "@/share/components/Divivder/Divider";
-import Contacts from "../Footer/Contacts";
+import Contacts from "../../share/components/Contacts/Contacts";
+import { siteConfig } from "@/constant/SiteConfig";
+import useBreakpoints from "@/share/useBreakPoint";
 const useStyles = makeStyles(() => ({
   root: {
     width: "100%",
@@ -27,20 +29,20 @@ const StyledText = styled(Typography)(() => ({
 
 const HomePage = () => {
   const classes = useStyles();
-
+  const { isTabletSize } = useBreakpoints();
   return (
     <>
-      <StyledTitle variant="h3">Welcome to DomCoding</StyledTitle>
+      <StyledTitle variant={isTabletSize ? "bodyL" : "h3"}>
+        Welcome to DomCoding
+      </StyledTitle>
       <Typography variant="bodyS" mb={3}>
-        The Dom Nguyen&apos;s Blog, a software engineer in web development.
-        Here, I share my knowledge and experience about front-end and back-end
-        in web development. I hope you find it helpful.
+        {siteConfig.description}
       </Typography>
 
       <StyledBox>
         <StyledText variant="bodyS">Social Links:</StyledText>
         <Box>
-          <Contacts />
+          <Contacts isSmallSize />
         </Box>
       </StyledBox>
 
