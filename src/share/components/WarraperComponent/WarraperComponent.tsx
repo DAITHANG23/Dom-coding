@@ -8,7 +8,7 @@ interface WarraperComponentProps {
 }
 
 const useStyles = makeStyles(() => ({
-  root: { height: "100vh", padding: "16px" },
+  root: { padding: "16px" },
 }));
 
 const WarraperComponent = ({ children, className }: WarraperComponentProps) => {

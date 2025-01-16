@@ -1,9 +1,19 @@
+"use client";
 import React from "react";
 import WarraperComponent from "@/share/components/WarraperComponent/WarraperComponent";
+import { makeStyles } from "@mui/styles";
 
-const Posts = async () => {
+const useStyles = makeStyles(() => ({
+  container: {
+    height: "100vh",
+  },
+}));
+
+const Posts = () => {
+  const classes = useStyles();
+
   return (
-    <WarraperComponent>
+    <WarraperComponent className={classes.container}>
       <p>Posts</p>
     </WarraperComponent>
   );

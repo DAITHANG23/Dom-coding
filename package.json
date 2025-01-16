@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write ./src/**/*.{ts,tsx}"
+    "format": "prettier --write ./src/**/*.{ts,tsx}",
+    "--watch": "velite dev"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
@@ -26,6 +27,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.16",
     "prettier": "^3.3.3",
-    "typescript": "^5"
+    "typescript": "^5",
+    "velite": "^0.2.2"
   }
 }
