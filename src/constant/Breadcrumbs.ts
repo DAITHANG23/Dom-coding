@@ -14,6 +14,12 @@ const breadcrumbsMap: BreadcrumbsMap = {
     url: "/posts",
     parent: feature.HOME,
   },
+  [feature.POST_DETAIL]: {
+    name: feature.POST_DETAIL,
+    heading: "Post Detail",
+    url: "/posts/:id",
+    parent: feature.POSTS,
+  },
   [feature.TAGS]: {
     name: feature.TAGS,
     heading: "Tags",
