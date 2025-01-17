@@ -33,13 +33,29 @@ const BreadcrumbsComponent = () => {
   const pathname = usePathname();
   const { getRouteBreadcrumb } = useBreadcrumbs();
 
-  const routeItem = routes.find((route) => route.path === pathname);
+  const arrayPathname = pathname.split("/");
+  const pathnameItem = useMemo(() => {
+    if (arrayPathname.length > 2) {
+      return `/${arrayPathname[arrayPathname.length - 2]}`;
+    }
+    return pathname;
+  }, [pathname, arrayPathname]);
+
+  const routeItem = routes.find((route) => route.path === pathnameItem);
 
   const breadCrumbs = useMemo(() => {
     if (!routeItem) return [];
-
-    return getRouteBreadcrumb(routeItem?.id) || [];
-  }, [getRouteBreadcrumb, routeItem]);
+    let breadcrumbList = getRouteBreadcrumb(routeItem?.id) || [];
+    if (arrayPathname.length > 2) {
+      breadcrumbList = breadcrumbList.concat({
+        name: arrayPathname[2],
+        heading: arrayPathname[2],
+        url: pathname,
+        parent: arrayPathname[1],
+      });
+    }
+    return breadcrumbList;
+  }, [getRouteBreadcrumb, routeItem, arrayPathname, pathname]);
 
   return (
     <>

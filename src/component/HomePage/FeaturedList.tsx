@@ -123,7 +123,7 @@ const FeaturedList = () => {
         </Typography>
       </Box>
 
-      <PaginationComponent />
+      <PaginationComponent totalPages={3} />
     </div>
   );
 };

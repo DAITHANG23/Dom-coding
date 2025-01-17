@@ -19,9 +19,14 @@ const About = () => {
   return (
     <WarraperComponent className={classes.container}>
       <img
-        src="https://via.placeholder.com/150"
+        src="./images/avatar.png"
         alt="Avatar"
-        style={{ borderRadius: "50%", marginBottom: "24px" }}
+        style={{
+          borderRadius: "50%",
+          marginBottom: "24px",
+          width: "184px",
+          height: "184px",
+        }}
       />
       <h1>About Me</h1>
       <p>
