@@ -7,10 +7,12 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Callout from "@/share/components/mdx-component/Callout";
 import { Metadata } from "next";
+import { Box } from "@mui/material";
+import Tags from "@/component/Tags/TagsList";
 
 interface PostPageProps {
   params: {
-    slug: string[];
+    slug: string;
   };
 }
 
@@ -48,9 +50,10 @@ async function getAllPosts(): Promise<Post[]> {
   return await Promise.all(postsPromises);
 }
 
-async function getPostFromParams(params: PostPageProps["params"]) {
+async function getPostFromParams(slug: string) {
   const posts = await getAllPosts();
-  const post = posts.find((post) => post.slug === params.slug[0]);
+
+  const post = posts.find((post) => post.slug === slug);
   if (!post) return null;
 
   return post;
@@ -59,7 +62,7 @@ async function getPostFromParams(params: PostPageProps["params"]) {
 export async function generateMetadata({
   params,
 }: PostPageProps): Promise<Metadata> {
-  const post = await getPostFromParams(params);
+  const post = await getPostFromParams(params.slug);
 
   return {
     title: `Posts | ${post?.frontmatter.title || "Untitled"}`,
@@ -68,14 +71,28 @@ export async function generateMetadata({
 }
 
 const PostPage = async ({ params }: PostPageProps) => {
-  const post = await getPostFromParams(params);
+  const post = await getPostFromParams(params.slug);
 
   if (!post || !post.frontmatter.published) {
     notFound();
   }
 
+  const tagList =
+    post.frontmatter.tags &&
+    post.frontmatter.tags.map((tag) => {
+      return <Tags key={tag} tag={tag} />;
+    });
+
   return (
     <div style={{ padding: "16px" }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        {tagList}
+      </Box>
       <MDXRemote source={post.content || ""} components={{ Callout }} />
     </div>
   );

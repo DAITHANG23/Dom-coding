@@ -1,11 +1,10 @@
-import withMDX from "@next/mdx";
+const withMDX = require("@next/mdx")();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
+  reactStrictMode: true,
+  swcMinify: true,
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-  experimental: {
-    missingSuspenseWithCSRBailout: false,
-  },
 };
 
-export default withMDX(nextConfig);
+module.exports = withMDX(nextConfig);

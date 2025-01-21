@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -84,7 +84,9 @@ const Posts = async ({ searchParams }: PostsProps) => {
           />
         );
       })}
-      <PaginationComponent totalPages={totalPages} />
+      <Suspense>
+        <PaginationComponent totalPages={totalPages} />
+      </Suspense>
     </Box>
   );
 };
