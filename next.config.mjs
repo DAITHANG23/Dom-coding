@@ -1,6 +1,4 @@
-import createMDXPlugin from "@next/mdx";
-
-const withMDX = createMDXPlugin({ extension: /\.mdx?$/ });
+import withMDX from "@next/mdx";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",

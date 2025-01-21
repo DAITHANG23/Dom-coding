@@ -32,6 +32,8 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 const BreadcrumbsComponent = () => {
   const pathname = usePathname();
   const { getRouteBreadcrumb } = useBreadcrumbs();
+  const pagePost =
+    typeof window !== "undefined" && window.localStorage.getItem("currentPage");
 
   const arrayPathname = pathname.split("/");
   const pathnameItem = useMemo(() => {
@@ -70,7 +72,12 @@ const BreadcrumbsComponent = () => {
             {breadCrumbs.map((item, index) => {
               return (
                 <StyledTypography key={item.url} variant="bodyXXSM">
-                  {index < breadCrumbs.length - 1 ? (
+                  {index < breadCrumbs.length - 1 && item.name === "Posts" ? (
+                    <StyledLink href={`/posts?page=${pagePost}`}>
+                      {item.name}
+                    </StyledLink>
+                  ) : index < breadCrumbs.length - 1 &&
+                    item.name !== "Posts" ? (
                     <StyledLink href={item.url ?? "/"}>{item.name}</StyledLink>
                   ) : (
                     item.name

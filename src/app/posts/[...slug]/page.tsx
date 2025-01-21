@@ -4,7 +4,9 @@ import React from "react";
 import fs from "fs";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
-import { Box } from "@mui/material";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import Callout from "@/share/components/mdx-component/Callout";
+import { Metadata } from "next";
 
 interface PostPageProps {
   params: {
@@ -46,16 +48,27 @@ async function getAllPosts(): Promise<Post[]> {
   return await Promise.all(postsPromises);
 }
 
-// export async function generateStaticParams() {
-//   const posts = getAllPosts();
-//   return posts.map((post) => ({
-//     params: { slug: post.frontmatter.description },
-//   }));
-// }
-const PostPage = async ({ params }: PostPageProps) => {
+async function getPostFromParams(params: PostPageProps["params"]) {
   const posts = await getAllPosts();
-
   const post = posts.find((post) => post.slug === params.slug[0]);
+  if (!post) return null;
+
+  return post;
+}
+
+export async function generateMetadata({
+  params,
+}: PostPageProps): Promise<Metadata> {
+  const post = await getPostFromParams(params);
+
+  return {
+    title: `Posts | ${post?.frontmatter.title || "Untitled"}`,
+    description: post?.frontmatter.description || "",
+  };
+}
+
+const PostPage = async ({ params }: PostPageProps) => {
+  const post = await getPostFromParams(params);
 
   if (!post || !post.frontmatter.published) {
     notFound();
@@ -63,8 +76,7 @@ const PostPage = async ({ params }: PostPageProps) => {
 
   return (
     <div style={{ padding: "16px" }}>
-      <Box>{post.frontmatter.title}</Box>
-      <Box>{post.content}</Box>
+      <MDXRemote source={post.content || ""} components={{ Callout }} />
     </div>
   );
 };
