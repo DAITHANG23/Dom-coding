@@ -1,19 +1,25 @@
-"use client";
-import WarraperComponent from "@/share/components/WarraperComponent/WarraperComponent";
-import { makeStyles } from "@mui/styles";
+import { Box } from "@mui/material";
+import { Metadata } from "next";
 import React from "react";
 
-const useStyles = makeStyles(() => ({
-  container: {
-    height: "100vh",
-  },
-}));
+export const generateMetadata = async (): Promise<Metadata> => {
+  return {
+    title: "Tags | DomCoding",
+    description: "Tags page of DomCoding",
+    openGraph: {
+      title: "Tags | DomCoding",
+      description: "Tags page of DomCoding",
+      url: "/tags",
+      type: "website",
+    },
+  };
+};
+
 const Tags = () => {
-  const classes = useStyles();
   return (
-    <WarraperComponent className={classes.container}>
+    <Box sx={{ padding: "16px", height: "100vh" }}>
       <p>Tags</p>
-    </WarraperComponent>
+    </Box>
   );
 };
 

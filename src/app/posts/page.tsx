@@ -6,8 +6,22 @@ import { Post } from "@/types/mdx.types";
 import { Box } from "@mui/material";
 import PostItem from "@/component/PostItem/PostItem";
 import PaginationComponent from "@/share/components/Pagination/Pagination";
+import { Metadata } from "next";
 
 const POSTS_PER_PAGE = 3;
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  return {
+    title: "Posts | DomCoding",
+    description: "Posts about programming and web development.",
+    openGraph: {
+      title: "Posts | DomCoding",
+      description: "Posts about programming and web development.",
+      url: "/posts",
+      type: "website",
+    },
+  };
+};
 
 interface PostsProps {
   searchParams: { page: string };
