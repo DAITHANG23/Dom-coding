@@ -10,13 +10,18 @@ const PaginationComponent = ({ totalPages }: PaginationComponentProps) => {
   const pathname = usePathname();
   const router = useRouter();
   const currentPage = Number(searchParams.get("page")) || 1;
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+  typeof window !== "undefined" &&
+    window.localStorage.setItem("currentPage", currentPage.toString());
+
   useEffect(() => {
-    if (currentPage) {
+    if (currentPage === 1) {
       const params = new URLSearchParams(searchParams);
       params.set("page", "1");
       const newUrl = `${pathname}?${params.toString()}`;
       router.push(newUrl);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onChangePage = (
@@ -36,6 +41,7 @@ const PaginationComponent = ({ totalPages }: PaginationComponentProps) => {
         variant="outlined"
         color="primary"
         onChange={onChangePage}
+        page={currentPage}
       />
     </Stack>
   );
