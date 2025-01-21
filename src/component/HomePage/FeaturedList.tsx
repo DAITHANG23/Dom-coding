@@ -1,7 +1,7 @@
 "use client";
 import Calendar from "@/icons/Calendar";
 import { Typography, Box } from "@mui/material";
-import React from "react";
+import React, { Suspense } from "react";
 import { StyledTitle } from "./FeaturedList.styles";
 import PaginationComponent from "@/share/components/Pagination/Pagination";
 
@@ -123,7 +123,9 @@ const FeaturedList = () => {
         </Typography>
       </Box>
 
-      <PaginationComponent totalPages={3} />
+      <Suspense>
+        <PaginationComponent totalPages={3} />
+      </Suspense>
     </div>
   );
 };
