@@ -1,23 +1,34 @@
 /* eslint-disable @next/next/no-img-element */
-"use client";
-import WarraperComponent from "@/share/components/WarraperComponent/WarraperComponent";
-import { makeStyles } from "@mui/styles";
-import React from "react";
 
-const useStyles = makeStyles(() => ({
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
-  },
-}));
+import React from "react";
+import { Metadata } from "next";
+import { Box } from "@mui/material";
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  return {
+    title: "About Me | DomCoding",
+    description: "Introduce myself and my work.",
+    openGraph: {
+      title: "About Me",
+      description: "Introduce myself and my work.",
+      url: "/about",
+      type: "website",
+    },
+  };
+};
 
 const About = () => {
-  const classes = useStyles();
   return (
-    <WarraperComponent className={classes.container}>
+    <Box
+      sx={{
+        padding: "16px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+      }}
+    >
       <img
         src="./images/avatar.png"
         alt="Avatar"
@@ -44,7 +55,7 @@ const About = () => {
         teaching/tutoring, volunteering, etc.].
       </p>
       <p>Thank you for taking the time to learn more about me.</p>
-    </WarraperComponent>
+    </Box>
   );
 };
 

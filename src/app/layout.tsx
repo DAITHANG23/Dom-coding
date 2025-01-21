@@ -9,6 +9,7 @@ import { Box, CssBaseline } from "@mui/material";
 import Footer from "@/component/Footer/Footer";
 import dynamic from "next/dynamic";
 import BreadcrumbsComponent from "@/share/components/Breadcrumbs/Breadcrumbs";
+
 export const metadata: Metadata = {
   title: "Dom Coding",
 };
@@ -21,6 +22,7 @@ export default function RootLayout({
   const Header = dynamic(() => import("@/component/Header/Header"), {
     ssr: false,
   });
+
   return (
     <html
       lang="en"
