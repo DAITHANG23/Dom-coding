@@ -20,31 +20,39 @@ export const StyledTitle = styled(Typography)(({ theme }) => ({
   "&:hover": { textDecoration: "underline", cursor: "pointer" },
 }));
 
+export const StyledLink = styled(Link)(() => ({
+  textDecoration: "none",
+}));
+
+export const StyledBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  gap: "8px",
+  paddingTop: theme.spacing(2),
+  fontStyle: "italic",
+}));
+
+export const StyledTypography = styled(Typography)(() => ({
+  lineHeight: 1.75,
+}));
+
 const PostItem = ({ title, description, date, slug }: PostItemProps) => {
   return (
     <div>
       <Box pt={4}>
-        <Link href={`posts/${slug}`} style={{ textDecoration: "none" }}>
+        <StyledLink href={`posts/${slug}`}>
           <StyledTitle variant="h5">{title}</StyledTitle>
-        </Link>
+        </StyledLink>
 
-        <Box
-          sx={{
-            display: "flex",
-            gap: "8px",
-            paddingTop: "16px",
-            fontStyle: "italic",
-          }}
-        >
+        <StyledBox>
           <Calendar />
-          <Typography sx={{ lineHeight: 1.75 }}>
+          <StyledTypography>
             {date.toLocaleDateString("en-US", {
               month: "long",
               day: "numeric",
               year: "numeric",
             })}
-          </Typography>
-        </Box>
+          </StyledTypography>
+        </StyledBox>
 
         <Typography variant="bodyS">{description}</Typography>
       </Box>

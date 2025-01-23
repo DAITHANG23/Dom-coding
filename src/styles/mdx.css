@@ -1,0 +1,78 @@
+/* 1. Pre container */
+[data-rehype-pretty-code-figure] pre {
+  padding-left: 0;
+  padding-right: 0;
+  overflow: auto;
+}
+
+/* 2. Code container */
+[data-rehype-pretty-code-figure] code {
+  font-size: 0.875rem; /* equivalent to text-sm */
+  line-height: 1.75; /* equivalent to leading-loose */
+  border: 0;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  [data-rehype-pretty-code-figure] code {
+    font-size: 1rem; /* equivalent to md:text-base */
+  }
+}
+
+/* 3. Line numbers container */
+[data-rehype-pretty-code-figure] code[data-line-numbers] {
+  counter-reset: line;
+}
+
+/* 4. Line numbers styling */
+[data-rehype-pretty-code-figure] code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  margin-right: 1rem;
+  display: inline-block;
+  width: 1rem;
+  text-align: right;
+  color: gray;
+}
+
+/* 5. Line container */
+[data-rehype-pretty-code-figure] [data-line] {
+  border-left: 2px solid transparent;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+/* 6. Highlighted line */
+[data-rehype-pretty-code-figure] [data-highlighted-line] {
+  background-color: rgba(200, 200, 255, 0.1);
+  border-left: 2px solid blue;
+}
+
+/* 7. Highlighted characters */
+[data-rehype-pretty-code-figure] [data-highlighted-chars] {
+  border-radius: 4px;
+  background-color: rgba(82, 82, 91, 0.5); /* equivalent to bg-zinc-600/50 */
+  box-shadow: 0 0 0 4px rgba(82, 82, 91, 0.5);
+}
+
+/* 8. Character ID styling */
+[data-rehype-pretty-code-figure] [data-chars-id] {
+  border-bottom: 2px solid;
+  padding: 4px;
+  box-shadow: none;
+}
+
+/* 9. Subheading anchor */
+.subheading-anchor {
+  text-decoration: none; /* equivalent to no-underline */
+  color: rgb(78, 90, 103);
+}
+
+.subheading-anchor:hover {
+  text-decoration: underline; /* equivalent to hover:underline */
+}
+
+[data-rehpe-pretty-code-figure] {
+  margin-inline-start: 20px !important;
+  margin-inline-end: 20px;
+}

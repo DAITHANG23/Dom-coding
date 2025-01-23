@@ -4,17 +4,15 @@ import React from "react";
 import { Metadata } from "next";
 import { Box } from "@mui/material";
 
-export const generateMetadata = async (): Promise<Metadata> => {
-  return {
-    title: "About Me | DomCoding",
+export const metadata: Metadata = {
+  title: "About Me | DomCoding",
+  description: "Introduce myself and my work.",
+  openGraph: {
+    title: "About Me",
     description: "Introduce myself and my work.",
-    openGraph: {
-      title: "About Me",
-      description: "Introduce myself and my work.",
-      url: "/about",
-      type: "website",
-    },
-  };
+    url: "/about",
+    type: "website",
+  },
 };
 
 const About = () => {
