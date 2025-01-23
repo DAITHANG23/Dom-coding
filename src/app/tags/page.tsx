@@ -2,17 +2,15 @@ import { Box } from "@mui/material";
 import { Metadata } from "next";
 import React from "react";
 
-export const generateMetadata = async (): Promise<Metadata> => {
-  return {
+export const metadata: Metadata = {
+  title: "Tags | DomCoding",
+  description: "Tags page of DomCoding",
+  openGraph: {
     title: "Tags | DomCoding",
     description: "Tags page of DomCoding",
-    openGraph: {
-      title: "Tags | DomCoding",
-      description: "Tags page of DomCoding",
-      url: "/tags",
-      type: "website",
-    },
-  };
+    url: "/tags",
+    type: "website",
+  },
 };
 
 const Tags = () => {
