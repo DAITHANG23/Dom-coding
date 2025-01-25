@@ -4,7 +4,7 @@ export const siteConfig: SiteConfigModel = {
   name: "DomCoding",
   url: "https://domcoding.com",
   description:
-    "The Dom Nguyen's Blog, a software engineer in web development. Here, I share my knowledge and experience about front-end and back-end in web development. I hope you find it helpful.",
+    "The Dom Nguyen's Blog, a software engineer in web development. I have experience about developing for TechFin company. Here, I share my knowledge and experience about front-end and back-end in web development. I hope you find it helpful.",
   links: [
     {
       url: "https://github.com/DaITHANG23",
