@@ -1,131 +1,61 @@
 "use client";
 import Calendar from "@/icons/Calendar";
-import { Typography, Box } from "@mui/material";
-import React, { Suspense } from "react";
+import { Typography, Box, Button } from "@mui/material";
+import React, { useState } from "react";
 import { StyledTitle } from "./FeaturedList.styles";
-import PaginationComponent from "@/share/components/Pagination/Pagination";
+import FeaturesData from "@/constant/FeaturesData";
+
+const FEATURE_PER_PAGE = 3;
 
 const FeaturedList = () => {
-  const date = new Date();
+  const [isAddMore, setIsAddMore] = useState(false);
+
+  const displayFeatures = isAddMore
+    ? FeaturesData
+    : FeaturesData.slice(0, FEATURE_PER_PAGE);
+
+  const onClickAddMore = () => {
+    setIsAddMore((prev) => !prev);
+  };
 
   return (
     <div>
       <Typography variant="bodyL">Featured</Typography>
-      <Box pt={4}>
-        <StyledTitle variant="h5">[Rq] Series of React Query</StyledTitle>
-        <Box
+      {displayFeatures.map((item) => (
+        <Box pt={4} key={item.id}>
+          <StyledTitle variant="h5">{item.title}</StyledTitle>
+          <Box
+            sx={{
+              display: "flex",
+              gap: "8px",
+              paddingTop: "16px",
+              fontStyle: "italic",
+            }}
+          >
+            <Calendar />
+            <Typography sx={{ lineHeight: 1.75 }}>
+              {new Date(item.date).toLocaleDateString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </Typography>
+          </Box>
+
+          <Typography variant="bodyS">{item.description}</Typography>
+        </Box>
+      ))}
+      <div style={{ textAlign: "center" }}>
+        <Button
           sx={{
-            display: "flex",
-            gap: "8px",
-            paddingTop: "16px",
-            fontStyle: "italic",
+            marginTop: "24px",
+            padding: "12px 16px",
           }}
+          onClick={onClickAddMore}
         >
-          <Calendar />
-          <Typography sx={{ lineHeight: 1.75 }}>
-            {date.toLocaleDateString("en-US", {
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-            })}
-          </Typography>
-        </Box>
-
-        <Typography variant="bodyS">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quis
-          facere minus, nulla commodi similique, deleniti eos nihil aut
-          quibusdam dolor atque qui iste ipsum doloremque modi recusandae, vel
-          et?
-        </Typography>
-      </Box>
-
-      <Box sx={{ paddingTop: "32px" }}>
-        <StyledTitle variant="h5">[Rq] Series of React Query</StyledTitle>
-        <Box sx={{ display: "flex", gap: "8px", paddingTop: "16px" }}>
-          <Calendar />
-          <Typography sx={{ lineHeight: 1.75 }}>
-            {date.toLocaleDateString("en-US", {
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-            })}
-          </Typography>
-        </Box>
-
-        <Typography variant="bodyS">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quis
-          facere minus, nulla commodi similique, deleniti eos nihil aut
-          quibusdam dolor atque qui iste ipsum doloremque modi recusandae, vel
-          et?
-        </Typography>
-      </Box>
-
-      <Box sx={{ paddingTop: "32px" }}>
-        <StyledTitle variant="h5">[Rq] Series of React Query</StyledTitle>
-        <Box sx={{ display: "flex", gap: "8px", paddingTop: "16px" }}>
-          <Calendar />
-          <Typography sx={{ lineHeight: 1.75 }}>
-            {date.toLocaleDateString("en-US", {
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-            })}
-          </Typography>
-        </Box>
-
-        <Typography variant="bodyS">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quis
-          facere minus, nulla commodi similique, deleniti eos nihil aut
-          quibusdam dolor atque qui iste ipsum doloremque modi recusandae, vel
-          et?
-        </Typography>
-      </Box>
-
-      <Box sx={{ paddingTop: "32px" }}>
-        <StyledTitle variant="h5">[Rq] Series of React Query</StyledTitle>
-        <Box sx={{ display: "flex", gap: "8px", paddingTop: "16px" }}>
-          <Calendar />
-          <Typography sx={{ lineHeight: 1.75 }}>
-            {date.toLocaleDateString("en-US", {
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-            })}
-          </Typography>
-        </Box>
-
-        <Typography variant="bodyS">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quis
-          facere minus, nulla commodi similique, deleniti eos nihil aut
-          quibusdam dolor atque qui iste ipsum doloremque modi recusandae, vel
-          et?
-        </Typography>
-      </Box>
-
-      <Box sx={{ paddingTop: "32px" }}>
-        <StyledTitle variant="h5">[Rq] Series of React Query</StyledTitle>
-        <Box sx={{ display: "flex", gap: "8px", paddingTop: "16px" }}>
-          <Calendar />
-          <Typography sx={{ lineHeight: 1.75 }}>
-            {date.toLocaleDateString("en-US", {
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-            })}
-          </Typography>
-        </Box>
-
-        <Typography variant="bodyS">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quis
-          facere minus, nulla commodi similique, deleniti eos nihil aut
-          quibusdam dolor atque qui iste ipsum doloremque modi recusandae, vel
-          et?
-        </Typography>
-      </Box>
-
-      <Suspense>
-        <PaginationComponent totalPages={3} />
-      </Suspense>
+          {isAddMore ? "Show less" : "Add more"}
+        </Button>
+      </div>
     </div>
   );
 };

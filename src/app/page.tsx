@@ -2,6 +2,7 @@ import FeaturedList from "@/component/HomePage/FeaturedList";
 import HomePage from "@/component/HomePage/HomePage";
 import { Box } from "@mui/material";
 import { MobileRule } from "@/utils/BreakPointMedia";
+
 const Home = () => {
   return (
     <Box

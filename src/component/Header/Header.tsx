@@ -73,7 +73,9 @@ const Header = () => {
   }, [isDarkMode, setMode]);
 
   const valuePathName = useMemo(() => {
-    return pathname !== "/" ? pathname?.split("/")[1] : pathname;
+    return pathname !== "/" && pathname?.split("/").length <= 2
+      ? pathname?.split("/")[1]
+      : pathname;
   }, [pathname]);
 
   const [valueTab, setValueTab] = useState(valuePathName);
@@ -169,7 +171,9 @@ const Header = () => {
                 <StyledListItemText
                   key={valueTab}
                   primary={item.title}
-                  ischoosetab={(valueTab === item.url).toString()}
+                  ischoosetab={(
+                    valueTab === item.title.toLowerCase()
+                  ).toString()}
                 />
               </ListItemButton>
             </ListItem>
@@ -214,7 +218,11 @@ const Header = () => {
           <StyledList>
             <StyledTabs value={valueTab} onChange={handleChangeTabs}>
               {LIST_ITEM_NAVBAR.map((i) => (
-                <StyledTab key={i.title} label={i.title} value={i.url} />
+                <StyledTab
+                  key={i.title}
+                  label={i.title}
+                  value={i.title.toLowerCase()}
+                />
               ))}
             </StyledTabs>
 
