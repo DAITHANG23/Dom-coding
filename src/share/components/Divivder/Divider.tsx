@@ -1,3 +1,4 @@
+"use client";
 import { styled, Divider } from "@mui/material";
 
 interface DividerProps {

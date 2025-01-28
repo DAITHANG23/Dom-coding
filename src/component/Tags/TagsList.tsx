@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 interface TagsProps {
   tag: string;
+  isBigSize?: boolean;
 }
 
 const StyledLink = styled(Link)(({ theme }) => ({
@@ -12,9 +13,7 @@ const StyledLink = styled(Link)(({ theme }) => ({
   ...theme.applyStyles("dark", {
     color: `${theme.palette.grey[500]}`,
   }),
-  textDecorationStyle: "dashed",
-  textDecorationLine: "underline",
-  textUnderlineOffset: "4px",
+  textDecoration: "none",
   "&:hover": {
     color: theme.palette.primary.main,
     ...theme.applyStyles("dark", {
@@ -25,20 +24,26 @@ const StyledLink = styled(Link)(({ theme }) => ({
   },
 }));
 
-const StyledTypography = styled(Typography)(() => ({
-  textDecorationStyle: "dashed",
+const StyledTypography = styled(Typography)<{ isBigSize?: boolean }>(
+  ({ theme, isBigSize }) => ({
+    backgroundColor: "#F1F5F9",
+    padding: "2px 10px",
+    borderRadius: "8px",
+    fontSize: isBigSize ? "18px" : "12px",
+    color: theme.palette.common.black,
 
-  "&:hover": {
-    fontWeight: "bold",
-    transition: "all 0.3 ease-in-out",
-  },
-}));
-const Tags = ({ tag }: TagsProps) => {
+    "&:hover": {
+      fontWeight: "bold",
+      transition: "all 0.3 ease-in-out",
+    },
+  })
+);
+const TagsList = ({ tag, isBigSize }: TagsProps) => {
   return (
     <StyledLink href={`/tags/${tag}`} key={tag}>
-      <StyledTypography>{`#${tag}`}</StyledTypography>
+      <StyledTypography isBigSize={isBigSize}>{`${tag}`}</StyledTypography>
     </StyledLink>
   );
 };
 
-export default Tags;
+export default TagsList;
