@@ -39,7 +39,7 @@ const PostItem = ({ title, description, date, slug }: PostItemProps) => {
   return (
     <div>
       <Box pt={4}>
-        <StyledLink href={`posts/${slug}`}>
+        <StyledLink href={`/posts/${slug}`}>
           <StyledTitle variant="h5">{title}</StyledTitle>
         </StyledLink>
 

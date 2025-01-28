@@ -9,7 +9,7 @@ export interface PreProps extends React.HTMLProps<HTMLPreElement> {
 const PreWrapper: React.FC<PreProps> = ({
   children,
   raw,
-  ["data-language"]: dataLanguage = "Shell",
+  // ["data-language"]: dataLanguage = "Shell",
   ...props
 }) => {
   return (

@@ -55,6 +55,9 @@ const Header = () => {
 
   const [fixedHeaderBackground, setFixedHeaderBackground] = useState(false);
 
+  const postPage =
+    typeof window !== "undefined" && window.localStorage.getItem("currentPage");
+
   const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
     if (
       typeof window !== "undefined" &&
@@ -73,10 +76,14 @@ const Header = () => {
   }, [isDarkMode, setMode]);
 
   const valuePathName = useMemo(() => {
-    return pathname !== "/" && pathname?.split("/").length <= 2
-      ? pathname?.split("/")[1]
-      : pathname;
-  }, [pathname]);
+    return pathname !== "/" &&
+      pathname?.split("/").length <= 2 &&
+      pathname === "/posts"
+      ? `${pathname?.split("/")[1]}?page=${postPage}`
+      : pathname !== "/" && pathname?.split("/").length <= 2
+        ? pathname?.split("/")[1]
+        : pathname;
+  }, [pathname, postPage]);
 
   const [valueTab, setValueTab] = useState(valuePathName);
 
@@ -164,7 +171,7 @@ const Header = () => {
           <StyledLink
             key={item.title}
             href={item.url}
-            onClick={() => handleChangeItemList(item.title)}
+            onClick={() => handleChangeItemList(item.url)}
           >
             <ListItem disablePadding>
               <ListItemButton sx={{ textAlign: "center" }}>
@@ -216,12 +223,12 @@ const Header = () => {
         </div>
         <StyledNavbarListContainer>
           <StyledList>
-            <StyledTabs value={valueTab} onChange={handleChangeTabs}>
+            <StyledTabs value={pathname} onChange={handleChangeTabs}>
               {LIST_ITEM_NAVBAR.map((i) => (
                 <StyledTab
                   key={i.title}
                   label={i.title}
-                  value={i.title.toLowerCase()}
+                  value={i.url.toLowerCase()}
                 />
               ))}
             </StyledTabs>
