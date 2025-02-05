@@ -1,6 +1,7 @@
 import PostItem from "@/component/PostItem/PostItem";
 import { Typography } from "@mui/material";
-import { getAllPosts } from "@/utils/utils";
+import { getAllPosts, getPostsFromParams } from "@/utils/utils";
+import { Metadata } from "next";
 
 interface TagItemProps {
   params: {
@@ -8,16 +9,13 @@ interface TagItemProps {
   };
 }
 
-async function getPostsFromParams(slug: string) {
-  const posts = await getAllPosts();
-
-  const postsList = posts.filter((post) =>
-    post.frontmatter.tags?.some((item) => item === slug)
-  );
-
-  if (!postsList) return [];
-
-  return postsList;
+export async function generateMetadata({
+  params,
+}: TagItemProps): Promise<Metadata> {
+  return {
+    title: `Tag: ${params.slug || "Untitled"} | DomCoding`,
+    description: params.slug || "",
+  };
 }
 
 export async function generateStaticParams(): Promise<
