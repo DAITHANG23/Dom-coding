@@ -11,7 +11,7 @@ import rehypeSlug from "rehype-slug";
 import Calendar from "@/icons/Calendar";
 import DividerComponent from "@/share/components/Divivder/Divider";
 import "@/styles/component.css";
-import { getAllPosts } from "@/utils/utils";
+import { getAllPosts, getPostFromParams } from "@/utils/utils";
 // import { Node } from "unist";
 
 // import { Root, Element } from "hast";
@@ -54,15 +54,6 @@ export const dynamicParams = true;
 //     }
 //   });
 // };
-
-async function getPostFromParams(slug: string) {
-  const posts = await getAllPosts();
-
-  const post = posts.find((post) => post.slug === slug);
-  if (!post) return null;
-
-  return post;
-}
 
 export async function generateStaticParams(): Promise<
   PostPageProps["params"][]

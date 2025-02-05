@@ -44,3 +44,24 @@ export async function getAllPosts(): Promise<Post[]> {
   });
   return await Promise.all(postsPromises);
 }
+
+export async function getPostFromParams(slug: string) {
+  const posts = await getAllPosts();
+
+  const post = posts.find((post) => post.slug === slug);
+  if (!post) return null;
+
+  return post;
+}
+
+export async function getPostsFromParams(slug: string) {
+  const posts = await getAllPosts();
+
+  const postsList = posts.filter((post) =>
+    post.frontmatter.tags?.some((item) => item === slug)
+  );
+
+  if (!postsList) return [];
+
+  return postsList;
+}
