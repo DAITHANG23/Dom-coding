@@ -22,9 +22,9 @@ export async function generateStaticParams(): Promise<
   TagItemProps["params"][]
 > {
   const posts = await getAllPosts();
-  const paths = posts.map((post) => ({ slug: post.slug }));
+  const allTags = new Set(posts.flatMap((post) => post.frontmatter.tags || []));
 
-  return paths;
+  return Array.from(allTags).map((tag) => ({ slug: tag }));
 }
 
 const TagItem = async ({ params }: TagItemProps) => {
