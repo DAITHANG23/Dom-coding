@@ -13,10 +13,10 @@ const StyledBox = styled(Box)<{ type: string }>(({ theme, type }) => ({
   marginTop: 0,
   backgroundColor:
     type === "warning"
-      ? "#FDF7CB"
+      ? theme.palette.warning["100"]
       : type === "danger"
-        ? " #FF9595"
-        : " #D5FBCE",
+        ? theme.palette.error["300"]
+        : theme.palette.success["100"],
   padding: theme.spacing(3),
 }));
 
