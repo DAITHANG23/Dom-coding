@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
-    "typeRoots": [
-      "./src/types",
-      "./node_modules/@mui/material/styles/createPalette.d.ts"
-    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
