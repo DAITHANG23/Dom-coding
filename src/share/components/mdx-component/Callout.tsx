@@ -1,7 +1,7 @@
 "use client";
 import { Box, styled } from "@mui/material";
 import React from "react";
-
+import { ColorPartial } from "@mui/material/styles/createPalette";
 export interface CalloutProps {
   children: React.ReactNode;
   type?: "default" | "warning" | "danger";
@@ -13,10 +13,10 @@ const StyledBox = styled(Box)<{ type: string }>(({ theme, type }) => ({
   marginTop: 0,
   backgroundColor:
     type === "warning"
-      ? theme.palette.warning["100"]
+      ? `${theme.palette.warning["100"] as ColorPartial}`
       : type === "danger"
-        ? theme.palette.error["300"]
-        : theme.palette.success["100"],
+        ? `${theme.palette.error["300"] as ColorPartial}`
+        : `${theme.palette.success["100"] as ColorPartial}`,
   padding: theme.spacing(3),
 }));
 
