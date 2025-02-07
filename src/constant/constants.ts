@@ -169,7 +169,7 @@ export const MY_TECHNOLOGIES: Array<ListTechnologiesType> = [
           "https://res.cloudinary.com/dn797d3j3/image/upload/v1738731074/DomCoding-Blog-Images/jslogo_wasuna.png",
       },
       {
-        title: "TypeScript",
+        title: "Typescript",
         image:
           "https://res.cloudinary.com/dn797d3j3/image/upload/v1738731091/DomCoding-Blog-Images/Typescript_logo_2020.svg_ywkj2p.png",
       },

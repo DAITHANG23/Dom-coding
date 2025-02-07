@@ -20,7 +20,14 @@ const Tags = async () => {
     <Box sx={{ padding: "16px", height: "80vh" }}>
       <Typography variant="bodyL">Tags</Typography>
       <Typography pt={1}>All the tags uses in posts.</Typography>
-      <Box sx={{ display: "flex", flexWrap: "wrap", paddingTop: "32px" }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          paddingTop: "32px",
+          gap: "8px",
+        }}
+      >
         {LIST_ITEM_TAGS.map((item) => {
           return <TagsList tag={item} key={item} isBigSize />;
         })}

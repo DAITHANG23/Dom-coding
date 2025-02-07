@@ -8,7 +8,7 @@ interface TagsProps {
 }
 
 const StyledLink = styled(Link)(({ theme }) => ({
-  marginRight: "12px",
+  marginRight: "2px",
   color: theme.palette.common.black,
   ...theme.applyStyles("dark", {
     color: `${theme.palette.grey[500]}`,
