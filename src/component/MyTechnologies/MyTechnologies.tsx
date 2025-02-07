@@ -9,7 +9,7 @@ import {
   TooltipProps,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 
 const StyledTooltip = styled(({ className, ...props }: TooltipProps) => (
   <Tooltip {...props} arrow classes={{ popper: className }} />
@@ -62,6 +62,11 @@ const StyledTitleTechnology = styled(Typography)(({ theme }) => ({
 }));
 
 const MyTechnologies = () => {
+  const [open, setOpen] = useState<string | null>(null);
+
+  const handleOpen = (title: string) => {
+    setOpen(title);
+  };
   return (
     <Box sx={{ padding: "8px" }}>
       <Box sx={{ textAlign: "center" }}>
@@ -83,7 +88,13 @@ const MyTechnologies = () => {
                 {item?.technologies.map((i) => {
                   return (
                     <Box key={i.title}>
-                      <StyledTooltip title={i.title}>
+                      <StyledTooltip
+                        title={i.title}
+                        onMouseLeave={() => setOpen(null)}
+                        onClick={() => setOpen(i.title)}
+                        onMouseEnter={() => handleOpen(i.title)}
+                        open={open === i.title}
+                      >
                         <img
                           src={i.image}
                           alt={i.title}

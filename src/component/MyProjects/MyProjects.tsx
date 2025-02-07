@@ -19,8 +19,7 @@ const StyledGridContainer = styled(Grid2)(() => ({
   opacity: 1,
   visibility: "visible",
   borderRadius: "12px",
-  boxShadow:
-    " 0px 1px 4px rgba(40, 47, 123, 0.03), 0px 8px 24px rgba(40, 47, 123, 0.04)",
+  boxShadow: "0 2px 8px rgba(0, 0, 0, 0.26)",
   transform: "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)",
   transition:
     "border 0.4s, opacity 2.5s cubic-bezier(0.5, 0, 0, 1) 0.4s, transform 2.5s cubic-bezier(0.5, 0, 0, 1) 0.4s",
@@ -90,7 +89,7 @@ const MyProjects = () => {
         Recent Projects
       </Typography>
 
-      <Grid2 container spacing={2} sx={{ padding: "16px" }}>
+      <Grid2 container spacing={3} sx={{ padding: "16px" }}>
         {MY_PROJECTS.map((item) => {
           return (
             <StyledGridContainer
