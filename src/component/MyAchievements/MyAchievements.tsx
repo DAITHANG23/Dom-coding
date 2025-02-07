@@ -10,6 +10,7 @@ import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
 import Calendar from "@/icons/Calendar";
 import { Box, styled, Typography } from "@mui/material";
 import { LIST_EXPERIENCES } from "@/constant/constants";
+import useBreakpoints from "@/share/useBreakPoint";
 
 const StyledTimeLineOppositeContent = styled(TimelineOppositeContent)(() => ({
   display: "flex",
@@ -25,6 +26,22 @@ const StyledTitle = styled("span")(({ theme }) => ({
   }),
 }));
 
+const StyledTimelineItem = styled(TimelineItem)(() => ({
+  "&::before": {
+    content: "none",
+    padding: 0,
+    flex: 0,
+  },
+}));
+
+const StyledBoxContentInMoble = styled(Box)(({ theme }) => ({
+  display: "flex",
+  gap: "8px",
+  textAlign: "left",
+  justifyContent: "flex-start",
+  color: theme.palette.primary.main,
+}));
+
 const StyledTitleContent = styled(Typography)(() => ({
   fontWeight: "bold",
 }));
@@ -38,6 +55,7 @@ const StyledTimelineConnector = styled(TimelineConnector)(({ theme }) => ({
 }));
 
 const MyAchievements = () => {
+  const { isTabletSize } = useBreakpoints();
   return (
     <div style={{ textAlign: "center" }}>
       <Typography>
@@ -49,25 +67,35 @@ const MyAchievements = () => {
       <Timeline>
         {LIST_EXPERIENCES.map((item) => {
           return (
-            <TimelineItem key={item.title}>
-              <StyledTimeLineOppositeContent color="primary">
-                <Box>
-                  <Calendar />
-                </Box>
-                <Box>{item.time}</Box>
-              </StyledTimeLineOppositeContent>
+            <StyledTimelineItem key={item.title}>
+              {!isTabletSize && (
+                <StyledTimeLineOppositeContent color="primary">
+                  <Box>
+                    <Calendar />
+                  </Box>
+                  <Box>{item.time}</Box>
+                </StyledTimeLineOppositeContent>
+              )}
               <TimelineSeparator>
                 <TimelineDot color="primary" />
                 <StyledTimelineConnector />
               </TimelineSeparator>
               <TimelineContent>
+                {isTabletSize && (
+                  <StyledBoxContentInMoble>
+                    <Box>
+                      <Calendar />
+                    </Box>
+                    <Box>{item.time}</Box>
+                  </StyledBoxContentInMoble>
+                )}
                 <StyledTitleContent variant="h5">
                   {item.title}
                 </StyledTitleContent>
 
                 <StyledContent>{item.content}</StyledContent>
               </TimelineContent>
-            </TimelineItem>
+            </StyledTimelineItem>
           );
         })}
       </Timeline>
