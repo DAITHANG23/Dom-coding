@@ -68,6 +68,16 @@ const Header = () => {
   });
 
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      const timeoutId = setTimeout(() => {
+        window.localStorage.removeItem("searchText");
+      }, 60000);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, []);
+
+  useEffect(() => {
     if (isDarkMode) {
       setMode("dark");
     } else {
@@ -187,7 +197,7 @@ const Header = () => {
           </StyledLink>
         ))}
       </List>
-      <Box onClick={() => handleChangeItemList("search")}>
+      <Box onClick={() => handleChangeItemList("/search")}>
         <StyledLink href={"/search"}>
           <StyledSearchIcon ischoosetab={(valueTab === "search").toString()}>
             <SearchIcon />
@@ -233,7 +243,7 @@ const Header = () => {
               ))}
             </StyledTabs>
 
-            <StyledItemList onClick={() => handleChangeItemList("search")}>
+            <StyledItemList onClick={() => handleChangeItemList("/search")}>
               <StyledLink href={"/search"}>
                 <StyledSearchIcon
                   ischoosetab={(valueTab === "search").toString()}
