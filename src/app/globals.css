@@ -16,6 +16,9 @@ p {
   margin: 0 auto;
   box-sizing: border-box;
   max-width: 740px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .overflow-x-scroll {

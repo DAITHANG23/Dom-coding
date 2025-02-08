@@ -7,6 +7,10 @@ export const StyledDivider = styled(Divider)(({ theme }) => ({
   }),
 }));
 
+export const StyledBox = styled(Box)(() => ({
+  marginTop: "auto",
+}));
+
 export const StyledBoxContainer = styled(Box)(({ theme }) => ({
   padding: theme.spacing(4, 3),
   display: "flex",

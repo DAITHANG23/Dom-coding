@@ -3,6 +3,7 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import {
+  StyledBox,
   StyledBoxContainer,
   StyledBoxContent,
   StyledDivider,
@@ -16,7 +17,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { isTabletSize } = useBreakpoints();
   return (
-    <div>
+    <StyledBox>
       <StyledDivider variant="middle" />
       <StyledBoxContainer>
         {isTabletSize ? (
@@ -42,7 +43,7 @@ const Footer = () => {
           </>
         )}
       </StyledBoxContainer>
-    </div>
+    </StyledBox>
   );
 };
 

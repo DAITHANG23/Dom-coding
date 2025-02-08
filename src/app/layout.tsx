@@ -12,7 +12,6 @@ import BreadcrumbsComponent from "@/share/components/Breadcrumbs/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Dom Coding",
-  icons: "favicon.ico",
 };
 
 export default function RootLayout({
