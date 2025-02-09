@@ -2,10 +2,11 @@
 import { useMemo } from "react";
 import routes from "@/constant/Routes";
 import useBreadcrumbs from "@/hooks/useBreadcrumbs";
-import { Box, Breadcrumbs, styled, Typography } from "@mui/material";
+import { Box, Breadcrumbs, Button, styled, Typography } from "@mui/material";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { MobileRule } from "@/utils/BreakPointMedia";
+import GoBackIcon from "@/icons/GoBackIcon";
 
 const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
@@ -32,8 +33,13 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 const BreadcrumbsComponent = () => {
   const pathname = usePathname();
   const { getRouteBreadcrumb } = useBreadcrumbs();
+
+  const router = useRouter();
   const pagePost =
     typeof window !== "undefined" && window.localStorage.getItem("currentPage");
+
+  const isContentPostPage =
+    pathname.startsWith("/posts") && pathname.split("/").length > 2;
 
   const arrayPathname = pathname.split("/");
   const pathnameItem = useMemo(() => {
@@ -61,7 +67,7 @@ const BreadcrumbsComponent = () => {
 
   return (
     <>
-      {pathname !== "/" ? (
+      {pathname !== "/" && !isContentPostPage ? (
         <Box
           sx={{
             padding: "155px 16px 16px",
@@ -86,6 +92,12 @@ const BreadcrumbsComponent = () => {
               );
             })}
           </StyledBreadcrumbs>
+        </Box>
+      ) : pathname !== "/" && isContentPostPage ? (
+        <Box sx={{ padding: "155px 16px 16px" }}>
+          <Button sx={{ color: "black" }} onClick={() => router.back()}>
+            <GoBackIcon /> <span style={{ marginLeft: "4px" }}>Go Back</span>
+          </Button>
         </Box>
       ) : (
         <Box sx={{ paddingTop: "90px" }}></Box>
