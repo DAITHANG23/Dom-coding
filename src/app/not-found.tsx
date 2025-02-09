@@ -10,7 +10,7 @@ export default function NotFound() {
     <Box sx={{ padding: "16px", textAlign: "center", marginTop: "100px" }}>
       <Image
         src={
-          "https://res.cloudinary.com/dn797d3j3/image/upload/v1739114461/DomCoding-Blog-Images/not-found_kh4dsa.jpg"
+          "https://res.cloudinary.com/dn797d3j3/image/upload/v1739116308/DomCoding-Blog-Images/not-found_rxox9m.png"
         }
         alt="not-found"
         width={isTabletSize ? 350 : 500}
