@@ -71,7 +71,7 @@ const Header = () => {
     if (typeof window !== "undefined") {
       const timeoutId = setTimeout(() => {
         window.localStorage.removeItem("searchText");
-      }, 60000);
+      }, 30000);
 
       return () => clearTimeout(timeoutId);
     }

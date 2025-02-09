@@ -8,6 +8,11 @@ import { usePathname, useRouter } from "next/navigation";
 import { MobileRule } from "@/utils/BreakPointMedia";
 import GoBackIcon from "@/icons/GoBackIcon";
 
+const StyledBoxContainer = styled(Box)(() => ({
+  padding: "155px 16px 16px",
+  [MobileRule]: { padding: "110px 16px 16px" },
+}));
+
 const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
   color: theme.palette.common.black,
@@ -28,6 +33,17 @@ const StyledBreadcrumbs = styled(Breadcrumbs)(({ theme }) => ({
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.primary.main,
+}));
+
+const StyledButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.common.black,
+  ...theme.applyStyles("dark", {
+    color: theme.palette.common.white,
+  }),
+}));
+
+const StyledSpan = styled("span")(() => ({
+  marginLeft: "4px",
 }));
 
 const BreadcrumbsComponent = () => {
@@ -68,12 +84,7 @@ const BreadcrumbsComponent = () => {
   return (
     <>
       {pathname !== "/" && !isContentPostPage ? (
-        <Box
-          sx={{
-            padding: "155px 16px 16px",
-            [MobileRule]: { padding: "110px 16px 16px" },
-          }}
-        >
+        <StyledBoxContainer>
           <StyledBreadcrumbs>
             {breadCrumbs.map((item, index) => {
               return (
@@ -92,13 +103,13 @@ const BreadcrumbsComponent = () => {
               );
             })}
           </StyledBreadcrumbs>
-        </Box>
+        </StyledBoxContainer>
       ) : pathname !== "/" && isContentPostPage ? (
-        <Box sx={{ padding: "155px 16px 16px" }}>
-          <Button sx={{ color: "black" }} onClick={() => router.back()}>
-            <GoBackIcon /> <span style={{ marginLeft: "4px" }}>Go Back</span>
-          </Button>
-        </Box>
+        <StyledBoxContainer>
+          <StyledButton onClick={() => router.back()}>
+            <GoBackIcon /> <StyledSpan>Go Back</StyledSpan>
+          </StyledButton>
+        </StyledBoxContainer>
       ) : (
         <Box sx={{ paddingTop: "90px" }}></Box>
       )}
