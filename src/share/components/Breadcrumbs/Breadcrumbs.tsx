@@ -2,10 +2,16 @@
 import { useMemo } from "react";
 import routes from "@/constant/Routes";
 import useBreadcrumbs from "@/hooks/useBreadcrumbs";
-import { Box, Breadcrumbs, styled, Typography } from "@mui/material";
+import { Box, Breadcrumbs, Button, styled, Typography } from "@mui/material";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { MobileRule } from "@/utils/BreakPointMedia";
+import GoBackIcon from "@/icons/GoBackIcon";
+
+const StyledBoxContainer = styled(Box)(() => ({
+  padding: "155px 16px 16px",
+  [MobileRule]: { padding: "110px 16px 16px" },
+}));
 
 const StyledLink = styled(Link)(({ theme }) => ({
   textDecoration: "none",
@@ -29,11 +35,27 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.primary.main,
 }));
 
+const StyledButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.common.black,
+  ...theme.applyStyles("dark", {
+    color: theme.palette.common.white,
+  }),
+}));
+
+const StyledSpan = styled("span")(() => ({
+  marginLeft: "4px",
+}));
+
 const BreadcrumbsComponent = () => {
   const pathname = usePathname();
   const { getRouteBreadcrumb } = useBreadcrumbs();
+
+  const router = useRouter();
   const pagePost =
     typeof window !== "undefined" && window.localStorage.getItem("currentPage");
+
+  const isContentPostPage =
+    pathname.startsWith("/posts") && pathname.split("/").length > 2;
 
   const arrayPathname = pathname.split("/");
   const pathnameItem = useMemo(() => {
@@ -61,13 +83,8 @@ const BreadcrumbsComponent = () => {
 
   return (
     <>
-      {pathname !== "/" ? (
-        <Box
-          sx={{
-            padding: "155px 16px 16px",
-            [MobileRule]: { padding: "110px 16px 16px" },
-          }}
-        >
+      {pathname !== "/" && !isContentPostPage ? (
+        <StyledBoxContainer>
           <StyledBreadcrumbs>
             {breadCrumbs.map((item, index) => {
               return (
@@ -86,7 +103,13 @@ const BreadcrumbsComponent = () => {
               );
             })}
           </StyledBreadcrumbs>
-        </Box>
+        </StyledBoxContainer>
+      ) : pathname !== "/" && isContentPostPage ? (
+        <StyledBoxContainer>
+          <StyledButton onClick={() => router.back()}>
+            <GoBackIcon /> <StyledSpan>Go Back</StyledSpan>
+          </StyledButton>
+        </StyledBoxContainer>
       ) : (
         <Box sx={{ paddingTop: "90px" }}></Box>
       )}
