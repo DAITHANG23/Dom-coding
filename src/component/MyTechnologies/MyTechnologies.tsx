@@ -1,5 +1,6 @@
 "use client";
 import { MY_TECHNOLOGIES } from "@/constant/constants";
+import WarraperComponent from "@/share/components/WarraperComponent/WarraperComponent";
 import {
   Box,
   Grid2,
@@ -46,13 +47,6 @@ const StyledBoxTitle = styled(Box)(({ theme }) => ({
   }),
 }));
 
-const StyledTitle = styled("span")(({ theme }) => ({
-  color: theme.palette.primary.main,
-  ...theme.applyStyles("dark", {
-    color: `${theme.palette.primary.main}`,
-  }),
-}));
-
 const StyledTitleTechnology = styled(Typography)(({ theme }) => ({
   color: theme.palette.primary.main,
   fontWeight: "bold",
@@ -68,16 +62,11 @@ const MyTechnologies = () => {
     setOpen(title);
   };
   return (
-    <Box sx={{ padding: "8px" }}>
-      <Box sx={{ textAlign: "center" }}>
-        <Typography>
-          My <StyledTitle>Technologies</StyledTitle>
-        </Typography>
-        <Typography variant="bodyL" pb={4}>
-          Technologies I&apos;ve worked with
-        </Typography>
-      </Box>
-      <Grid2 container spacing={2}>
+    <WarraperComponent
+      title="Technologies"
+      content="Technologies I've worked with"
+    >
+      <Grid2 container spacing={2} p={1}>
         {MY_TECHNOLOGIES.map((item) => {
           return (
             <Grid2 key={item.id} size={{ xs: 12, sm: 6, md: 4 }}>
@@ -111,7 +100,7 @@ const MyTechnologies = () => {
           );
         })}
       </Grid2>
-    </Box>
+    </WarraperComponent>
   );
 };
 

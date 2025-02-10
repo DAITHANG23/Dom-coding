@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 const Tags = async () => {
   return (
-    <Box sx={{ padding: "16px", height: "80vh" }}>
+    <Box sx={{ padding: "16px" }}>
       <Typography variant="bodyL">Tags</Typography>
       <Typography pt={1}>All the tags uses in posts.</Typography>
       <Box

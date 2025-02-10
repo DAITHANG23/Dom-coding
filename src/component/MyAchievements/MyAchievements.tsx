@@ -61,7 +61,7 @@ const MyAchievements = () => {
       <Typography>
         My <StyledTitle>Achievements</StyledTitle>
       </Typography>
-      <Typography variant="bodyL" pb={2}>
+      <Typography variant="bodyL" mb={4}>
         Work Experiences
       </Typography>
       <Timeline>

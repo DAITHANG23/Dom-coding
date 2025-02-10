@@ -2,15 +2,9 @@
 import { MY_SERVICES } from "@/constant/constants";
 import Backend from "@/icons/Backend";
 import Frontend from "@/icons/Frontend";
+import WarraperComponent from "@/share/components/WarraperComponent/WarraperComponent";
 import { Grid2, styled, Typography } from "@mui/material";
 import React from "react";
-
-const StyledTitle = styled("span")(({ theme }) => ({
-  color: theme.palette.primary.main,
-  ...theme.applyStyles("dark", {
-    color: theme.palette.primary.main,
-  }),
-}));
 
 const StyledBoxContent = styled(Grid2)(({ theme }) => ({
   backgroundColor: theme.palette.grey[400],
@@ -45,16 +39,11 @@ const StyledContent = styled(Typography)(({ theme }) => ({
 }));
 const MyServices = () => {
   return (
-    <div style={{ textAlign: "center" }}>
-      <Typography>
-        My <StyledTitle>Services</StyledTitle>
-      </Typography>
-      <Typography variant="bodyL">What I Do</Typography>
+    <WarraperComponent title="Services" content="What I Do">
       <Grid2
         container
         spacing={2}
         sx={{
-          marginTop: "32px",
           padding: "16px",
         }}
       >
@@ -68,7 +57,7 @@ const MyServices = () => {
           );
         })}
       </Grid2>
-    </div>
+    </WarraperComponent>
   );
 };
 

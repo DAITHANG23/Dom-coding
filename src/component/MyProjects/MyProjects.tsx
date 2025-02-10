@@ -2,16 +2,10 @@
 import { MY_PROJECTS } from "@/constant/constants";
 import GithubCodeIcon from "@/icons/GithubCodeIcon";
 import LinkIcon from "@/icons/LinkIcon";
+import WarraperComponent from "@/share/components/WarraperComponent/WarraperComponent";
 import { styled, Typography, Box, Grid2 } from "@mui/material";
 import Link from "next/link";
 import React from "react";
-
-const StyledTitle = styled("span")(({ theme }) => ({
-  color: theme.palette.primary.main,
-  ...theme.applyStyles("dark", {
-    color: theme.palette.primary.main,
-  }),
-}));
 
 const StyledGridContainer = styled(Grid2)(() => ({
   position: "relative",
@@ -81,14 +75,7 @@ const StyledLinkIcon = styled(Link)(({ theme }) => ({
 
 const MyProjects = () => {
   return (
-    <div style={{ textAlign: "center" }}>
-      <Typography>
-        My <StyledTitle>Projects</StyledTitle>
-      </Typography>
-      <Typography variant="bodyL" mb={4}>
-        Recent Projects
-      </Typography>
-
+    <WarraperComponent title="Projects" content="Recent Projects">
       <Grid2 container spacing={3} sx={{ padding: "16px" }}>
         {MY_PROJECTS.map((item) => {
           return (
@@ -141,7 +128,7 @@ const MyProjects = () => {
           );
         })}
       </Grid2>
-    </div>
+    </WarraperComponent>
   );
 };
 
