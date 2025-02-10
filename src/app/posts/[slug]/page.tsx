@@ -12,6 +12,7 @@ import Calendar from "@/icons/Calendar";
 import DividerComponent from "@/share/components/Divivder/Divider";
 import "@/styles/component.css";
 import { getAllPosts, getPostFromParams } from "@/utils/utils";
+import GiscusComments from "@/component/GiscusComments/GiscusComments";
 // import { Node } from "unist";
 
 // import { Root, Element } from "hast";
@@ -158,6 +159,7 @@ const PostPage = async ({ params }: PostPageProps) => {
           },
         }}
       />
+      <GiscusComments />
     </div>
   );
 };
