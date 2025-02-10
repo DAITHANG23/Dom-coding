@@ -13,6 +13,7 @@ import DividerComponent from "@/share/components/Divivder/Divider";
 import "@/styles/component.css";
 import { getAllPosts, getPostFromParams } from "@/utils/utils";
 import GiscusComments from "@/component/GiscusComments/GiscusComments";
+import LinearDeterminate from "@/component/LinearDeterminate/LinearDeterminate";
 // import { Node } from "unist";
 
 // import { Root, Element } from "hast";
@@ -96,6 +97,7 @@ const PostPage = async ({ params }: PostPageProps) => {
 
   return (
     <div style={{ padding: "16px" }}>
+      <LinearDeterminate />
       <Box>
         <Typography variant="bodyL">{post.frontmatter.title}</Typography>
 
