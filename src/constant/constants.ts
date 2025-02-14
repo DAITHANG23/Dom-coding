@@ -53,7 +53,7 @@ export const LIST_EXPERIENCES: Array<ListExperiencesType> = [
       "• Collaborating within a team to develop software product which is Transwap app. The Transwap app is a product allow users to exchange currency from one country to another country. The app is built using ReactJs, C# .NET, Material-UI and SQL Server, hosted on Azure. ",
   },
   {
-    time: "12/2022 - 10/2023",
+    time: "12/2022 - 5/2023",
     title: "Studying and Working Projects at IT Course",
     content:
       "• Collaborating with team in course to build projects about Ecommerce Web, App using ReactJs, NodeJs, ExpressJs, MongoDB, Firebase, Material-UI, TailwindCSS, Bootstrap, etc.",
