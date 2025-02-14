@@ -47,7 +47,7 @@ export const LIST_ITEM_TAGS = [
 
 export const LIST_EXPERIENCES: Array<ListExperiencesType> = [
   {
-    time: "11/2023 - Current",
+    time: "6/2023 - 12/2024",
     title: "Front-End Developer at Transwap Company",
     content:
       "• Collaborating within a team to develop software product which is Transwap app. The Transwap app is a product allow users to exchange currency from one country to another country. The app is built using ReactJs, C# .NET, Material-UI and SQL Server, hosted on Azure. ",
