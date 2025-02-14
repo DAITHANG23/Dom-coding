@@ -25,13 +25,13 @@ const TextFieldSearch = () => {
       const url = `${pathname}?${params.toString()}`;
       router.push(url);
     }
-  }, [searchFieldText, pathname, router, searchParams, searchValue]);
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-  typeof window !== "undefined" &&
-    window.localStorage.setItem("searchText", searchValue);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchFieldText, pathname, router, searchParams]);
 
   const onSearchTextChange = useDebouncedCallback((value: string) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    typeof window !== "undefined" &&
+      window.localStorage.setItem("searchText", searchValue);
     const params = new URLSearchParams(searchParams);
     params.set("searchtext", value);
     const url = `${pathname}?${params.toString()}`;
@@ -39,8 +39,8 @@ const TextFieldSearch = () => {
   }, debounceTime);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value);
     onSearchTextChange(event.target.value);
+    setSearchValue(event.target.value);
   };
   return (
     <div>
@@ -58,7 +58,6 @@ const TextFieldSearch = () => {
         placeholder="Search for anything"
         onChange={handleChange}
       />
-      {/* {debouncedSearchText && <div>Searching for: {debouncedSearchText}</div>} */}
     </div>
   );
 };
