@@ -19,6 +19,14 @@ const TextFieldSearch = () => {
   );
 
   useEffect(() => {
+    if (!searchValue || !searchFieldText) {
+      const params = new URLSearchParams(searchParams);
+      window.localStorage.removeItem("searchText");
+      params.delete("searchtext");
+      const url = `${pathname}`;
+      router.push(url);
+      return;
+    }
     if (searchFieldText) {
       const params = new URLSearchParams(searchParams);
       params.set("searchtext", searchValue);
@@ -31,7 +39,7 @@ const TextFieldSearch = () => {
   const onSearchTextChange = useDebouncedCallback((value: string) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     typeof window !== "undefined" &&
-      window.localStorage.setItem("searchText", searchValue);
+      window.localStorage.setItem("searchText", value);
     const params = new URLSearchParams(searchParams);
     params.set("searchtext", value);
     const url = `${pathname}?${params.toString()}`;
