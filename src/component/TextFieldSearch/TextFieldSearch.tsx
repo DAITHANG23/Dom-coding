@@ -27,12 +27,6 @@ const TextFieldSearch = () => {
       router.push(url);
       return;
     }
-    if (searchFieldText) {
-      const params = new URLSearchParams(searchParams);
-      params.set("searchtext", searchValue);
-      const url = `${pathname}?${params.toString()}`;
-      router.push(url);
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchFieldText, pathname, router, searchParams]);
 
