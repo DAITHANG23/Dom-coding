@@ -86,13 +86,14 @@ const Header = () => {
   }, [isDarkMode, setMode]);
 
   const valuePathName = useMemo(() => {
-    return pathname !== "/" &&
-      pathname?.split("/").length <= 2 &&
-      pathname === "/posts"
-      ? `${pathname?.split("/")[1]}?page=${postPage}`
-      : pathname !== "/" && pathname?.split("/").length <= 2
-        ? pathname?.split("/")[1]
-        : pathname;
+    if (pathname !== "/") {
+      if (pathname?.split("/").length <= 2 && pathname === "/posts") {
+        return `${pathname?.split("/")[1]}?page=${postPage}`;
+      } else if (pathname?.split("/").length <= 2) {
+        return pathname?.split("/")[1];
+      }
+    }
+    return pathname;
   }, [pathname, postPage]);
 
   const [valueTab, setValueTab] = useState(valuePathName);
