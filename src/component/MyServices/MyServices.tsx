@@ -5,8 +5,11 @@ import Frontend from "@/icons/Frontend";
 import WarraperComponent from "@/share/components/WarraperComponent/WarraperComponent";
 import { Grid2, styled, Typography } from "@mui/material";
 import React from "react";
+import { motion } from "framer-motion";
 
-const StyledBoxContent = styled(Grid2)(({ theme }) => ({
+const MotionGridItem = motion(Grid2);
+
+const StyledBoxContent = styled(MotionGridItem)(({ theme }) => ({
   backgroundColor: theme.palette.grey[400],
   borderRadius: "12px",
   color: theme.palette.primary.main,
@@ -40,17 +43,18 @@ const StyledContent = styled(Typography)(({ theme }) => ({
 const MyServices = () => {
   return (
     <WarraperComponent title="Services" content="What I Do">
-      <Grid2
-        container
-        spacing={2}
-        sx={{
-          padding: "16px",
-        }}
-      >
+      <Grid2 container spacing={2}>
         {MY_SERVICES.map((item) => {
           return (
-            <StyledBoxContent size={{ xs: 12, sm: 6, md: 6 }} key={item.id}>
-              {item.id === "frontend" ? <Frontend /> : <Backend />}{" "}
+            <StyledBoxContent
+              initial={{ opacity: 0, x: item.id === "frontend" ? -50 : 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              size={{ xs: 12, sm: 6, md: 6 }}
+              key={item.id}
+            >
+              {item.id === "frontend" ? <Frontend /> : <Backend />}
               <StyledTitleContent variant="h5">{item.title}</StyledTitleContent>
               <StyledContent>{item.content}</StyledContent>
             </StyledBoxContent>

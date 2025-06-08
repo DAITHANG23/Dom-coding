@@ -10,7 +10,9 @@ import {
   TooltipProps,
   Typography,
 } from "@mui/material";
+import Image from "next/image";
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 const StyledTooltip = styled(({ className, ...props }: TooltipProps) => (
   <Tooltip {...props} arrow classes={{ popper: className }} />
@@ -74,7 +76,7 @@ const MyTechnologies = () => {
                 <StyledBoxTitle>
                   <StyledTitleTechnology>{item.title}</StyledTitleTechnology>
                 </StyledBoxTitle>
-                {item?.technologies.map((i) => {
+                {item?.technologies.map((i, index) => {
                   return (
                     <Box key={i.title}>
                       <StyledTooltip
@@ -84,13 +86,34 @@ const MyTechnologies = () => {
                         onMouseEnter={() => handleOpen(i.title)}
                         open={open === i.title}
                       >
-                        <img
-                          src={i.image}
-                          alt={i.title}
-                          width={"40px"}
-                          height={"40px"}
-                          style={{ borderRadius: "4px" }}
-                        />
+                        <motion.div
+                          initial={{
+                            x: Math.random() * 200 - 100,
+                            y: Math.random() * 200 - 100,
+                            opacity: 0,
+                          }}
+                          whileInView={{
+                            x: 0,
+                            y: 0,
+                            opacity: 1,
+                          }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 100,
+                            damping: 10,
+                            duration: 1.5,
+                            delay: index * 0.1,
+                          }}
+                          viewport={{ once: true }}
+                        >
+                          <Image
+                            src={i.image}
+                            alt={i.title}
+                            width={40}
+                            height={40}
+                            style={{ borderRadius: "4px" }}
+                          />
+                        </motion.div>
                       </StyledTooltip>
                     </Box>
                   );
