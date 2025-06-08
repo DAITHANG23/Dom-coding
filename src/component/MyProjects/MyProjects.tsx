@@ -122,14 +122,16 @@ const MyProjects = () => {
                   Technologies: {item.technologies}
                 </StyledContent>
 
-                <StyledContentProject className="hover-effect" pt={3}>
-                  <StyledLink href={item.urlDemo || ""} target="blank">
-                    Demo
-                  </StyledLink>
-                  <StyledLinkIcon href={item.urlDemo || ""}>
-                    <LinkIcon />
-                  </StyledLinkIcon>
-                </StyledContentProject>
+                {item.urlDemo && (
+                  <StyledContentProject className="hover-effect" pt={3}>
+                    <StyledLink href={item.urlDemo || ""} target="blank">
+                      Demo
+                    </StyledLink>
+                    <StyledLinkIcon href={item.urlDemo || ""}>
+                      <LinkIcon />
+                    </StyledLinkIcon>
+                  </StyledContentProject>
+                )}
 
                 <StyledContentProject className="hover-effect" pt={1}>
                   <StyledLink href={item.urlCode || ""} target="blank">
