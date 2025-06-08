@@ -30,13 +30,14 @@ const About = () => {
       <h1>About Me</h1>
       <Box sx={{ textAlign: "center" }}>
         <img
-          src="./images/avatar.png"
+          src="https://res.cloudinary.com/dn797d3j3/image/upload/v1749315968/DomCoding-Blog-Images/cd645461-0bf1-4c10-8313-390d0491d22c.png_4_pp4kku.png"
           alt="Avatar"
           style={{
             borderRadius: "50%",
             marginBottom: "24px",
-            width: "184px",
-            height: "184px",
+            width: "211px",
+            height: "211px",
+            // objectFit: "cover",
           }}
         />
       </Box>
@@ -48,7 +49,23 @@ const About = () => {
         I am a middle software engineer about developing website/app. With
         knowledge in full-stack development, I offer the best projects resulting
         in quality work. I am constantly learning and improving my skills to
-        stay up-to-date with the latest technologies and trends.
+        stay up-to-date with the latest technologies and trends. I am a middle
+        software engineer about developing website/app. With knowledge in
+        full-stack development, I offer the best projects resulting in quality
+        work. I am constantly learning and improving my skills to stay
+        up-to-date with the latest technologies and trends. I am a middle
+        software engineer about developing website/app. With knowledge in
+        full-stack development, I offer the best projects resulting in quality
+        work. I am constantly learning and improving my skills to stay
+        up-to-date with the latest technologies and trends. I am a middle
+        software engineer about developing website/app. With knowledge in
+        full-stack development, I offer the best projects resulting in quality
+        work. I am constantly learning and improving my skills to stay
+        up-to-date with the latest technologies and trends. I am a middle
+        software engineer about developing website/app. With knowledge in
+        full-stack development, I offer the best projects resulting in quality
+        work. I am constantly learning and improving my skills to stay
+        up-to-date with the latest technologies and trends.
       </Typography>
       <DividerComponent classes={{ root: "custom-divider-class" }} />
 

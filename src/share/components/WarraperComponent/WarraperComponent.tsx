@@ -21,6 +21,10 @@ const StyledTitle = styled("span")(({ theme }) => ({
   }),
 }));
 
+const StyledContainer = styled("div")(() => ({
+  padding: "112px 0 32px",
+}));
+
 const WarraperComponent = ({
   children,
   className,
@@ -29,7 +33,7 @@ const WarraperComponent = ({
 }: WarraperComponentProps) => {
   const classes = useStyles();
   return (
-    <div className={`${classes.root} ${className}`}>
+    <StyledContainer className={`${classes.root} ${className}`}>
       <Typography>
         My <StyledTitle>{title}</StyledTitle>
       </Typography>
@@ -37,7 +41,7 @@ const WarraperComponent = ({
         {content}
       </Typography>
       {children}
-    </div>
+    </StyledContainer>
   );
 };
 

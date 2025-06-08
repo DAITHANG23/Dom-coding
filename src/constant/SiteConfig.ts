@@ -22,9 +22,9 @@ export const siteConfig: SiteConfigModel = {
       title: "Send an email to DomCoding",
     },
     {
-      url: "https://www.tiktok.com/@domnguyen2306",
-      icon: "TiktokIcon",
-      title: "DomCoding on Tiktok",
+      url: "https://www.facebook.com/DomNguyen2306",
+      icon: "FacebookIcon",
+      title: "DomCoding on Facebook",
     },
   ],
 };

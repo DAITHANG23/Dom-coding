@@ -6,6 +6,14 @@ import WarraperComponent from "@/share/components/WarraperComponent/WarraperComp
 import { styled, Typography, Box, Grid2 } from "@mui/material";
 import Link from "next/link";
 import React from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+
+const MotionGridContainer = motion(Grid2);
+
+const StyledContainer = styled(MotionGridContainer)(() => ({
+  padding: "16px",
+}));
 
 const StyledGridContainer = styled(Grid2)(() => ({
   position: "relative",
@@ -20,11 +28,6 @@ const StyledGridContainer = styled(Grid2)(() => ({
   "&:hover .hover-effect": {
     bottom: 0,
   },
-}));
-
-const StyledImage = styled("img")(() => ({
-  objectFit: "cover",
-  borderRadius: "12px",
 }));
 
 const StyledBoxContainer = styled(Box)(({ theme }) => ({
@@ -76,19 +79,32 @@ const StyledLinkIcon = styled(Link)(({ theme }) => ({
 const MyProjects = () => {
   return (
     <WarraperComponent title="Projects" content="Recent Projects">
-      <Grid2 container spacing={3} sx={{ padding: "16px" }}>
+      <StyledContainer
+        initial={{ opacity: 0, y: -50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        viewport={{ once: true }}
+        container
+        spacing={3}
+      >
         {MY_PROJECTS.map((item) => {
           return (
             <StyledGridContainer
               size={{ xs: 12, sm: 6, md: 6 }}
               key={item.title}
             >
-              <StyledImage
+              <Image
                 src={item.image}
                 alt={item.title}
-                width={"100%"}
-                height={"500px"}
+                width={500}
+                height={800}
+                style={{
+                  borderRadius: "12px",
+                  width: "100%",
+                  height: "600px",
+                }}
               />
+
               <StyledBoxContainer className="hover-effect">
                 <StyledContent className="hover-effect">
                   {item.type}
@@ -117,17 +133,28 @@ const MyProjects = () => {
 
                 <StyledContentProject className="hover-effect" pt={1}>
                   <StyledLink href={item.urlCode || ""} target="blank">
-                    View code{" "}
+                    {item.urlCodeBe ? "View code FE" : "View code"}
                   </StyledLink>
                   <StyledLinkIcon href={item.urlCode || ""}>
                     <GithubCodeIcon />
                   </StyledLinkIcon>
                 </StyledContentProject>
+
+                {item.urlCodeBe && (
+                  <StyledContentProject className="hover-effect" pt={1}>
+                    <StyledLink href={item.urlCodeBe || ""} target="blank">
+                      View code BE
+                    </StyledLink>
+                    <StyledLinkIcon href={item.urlCodeBe || ""}>
+                      <GithubCodeIcon />
+                    </StyledLinkIcon>
+                  </StyledContentProject>
+                )}
               </StyledBoxContainer>
             </StyledGridContainer>
           );
         })}
-      </Grid2>
+      </StyledContainer>
     </WarraperComponent>
   );
 };

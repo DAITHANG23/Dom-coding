@@ -3,11 +3,11 @@ import React from "react";
 import GitHubIcon from "@/icons/GitHubIcon";
 import LinkedinIcon from "@/icons/LinkedinIcon";
 import MailIcon from "@/icons/MailIcon";
-import TiktokIcon from "@/icons/TiktokIcon";
 import useBreakpoints from "@/share/useBreakPoint";
 import { Box, styled } from "@mui/material";
 import Link from "next/link";
 import { siteConfig } from "@/constant/SiteConfig";
+import FacebookIcon from "@/icons/FacebookIcon";
 
 interface ContactsProps {
   isSmallSize?: boolean;
@@ -42,12 +42,11 @@ const Contacts = ({ isSmallSize }: ContactsProps) => {
       case "LinkedinIcon":
         IconComponent = LinkedinIcon;
         break;
-      case "TiktokIcon":
-        IconComponent = TiktokIcon;
-        break;
-      default:
+      case "MailIcon":
         IconComponent = MailIcon;
         break;
+      default:
+        IconComponent = FacebookIcon;
     }
 
     return (

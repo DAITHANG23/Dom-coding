@@ -11,19 +11,14 @@ import Calendar from "@/icons/Calendar";
 import { Box, styled, Typography } from "@mui/material";
 import { LIST_EXPERIENCES } from "@/constant/constants";
 import useBreakpoints from "@/share/useBreakPoint";
+import { motion } from "framer-motion";
+import WarraperComponent from "@/share/components/WarraperComponent/WarraperComponent";
 
 const StyledTimeLineOppositeContent = styled(TimelineOppositeContent)(() => ({
   display: "flex",
   gap: "8px",
   textAlign: "right",
   justifyContent: "flex-end",
-}));
-
-const StyledTitle = styled("span")(({ theme }) => ({
-  color: theme.palette.primary.main,
-  ...theme.applyStyles("dark", {
-    color: theme.palette.primary.main,
-  }),
 }));
 
 const StyledTimelineItem = styled(TimelineItem)(() => ({
@@ -57,49 +52,59 @@ const StyledTimelineConnector = styled(TimelineConnector)(({ theme }) => ({
 const MyAchievements = () => {
   const { isTabletSize } = useBreakpoints();
   return (
-    <div style={{ textAlign: "center" }}>
-      <Typography>
-        My <StyledTitle>Achievements</StyledTitle>
-      </Typography>
-      <Typography variant="bodyL" mb={4}>
-        Work Experiences
-      </Typography>
+    <WarraperComponent title="Achievements" content="Work Experiences">
       <Timeline>
         {LIST_EXPERIENCES.map((item) => {
           return (
             <StyledTimelineItem key={item.title}>
               {!isTabletSize && (
-                <StyledTimeLineOppositeContent color="primary">
-                  <Box>
-                    <Calendar />
-                  </Box>
-                  <Box>{item.time}</Box>
-                </StyledTimeLineOppositeContent>
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  style={{ width: isTabletSize ? "100%" : "50%" }}
+                >
+                  <StyledTimeLineOppositeContent color="primary">
+                    <Box>
+                      <Calendar />
+                    </Box>
+                    <Box>{item.time}</Box>
+                  </StyledTimeLineOppositeContent>
+                </motion.div>
               )}
               <TimelineSeparator>
                 <TimelineDot color="primary" />
                 <StyledTimelineConnector />
               </TimelineSeparator>
-              <TimelineContent>
-                {isTabletSize && (
-                  <StyledBoxContentInMoble>
-                    <Box>
-                      <Calendar />
-                    </Box>
-                    <Box>{item.time}</Box>
-                  </StyledBoxContentInMoble>
-                )}
-                <StyledTitleContent variant="h5">
-                  {item.title}
-                </StyledTitleContent>
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                style={{ width: isTabletSize ? "100%" : "50%" }}
+              >
+                <TimelineContent>
+                  {isTabletSize && (
+                    <StyledBoxContentInMoble>
+                      <Box>
+                        <Calendar />
+                      </Box>
+                      <Box>{item.time}</Box>
+                    </StyledBoxContentInMoble>
+                  )}
+                  <StyledTitleContent variant="h5">
+                    {item.title}
+                  </StyledTitleContent>
 
-                <StyledContent>{item.content}</StyledContent>
-              </TimelineContent>
+                  <StyledContent>{item.content}</StyledContent>
+                </TimelineContent>
+              </motion.div>
             </StyledTimelineItem>
           );
         })}
       </Timeline>
-    </div>
+    </WarraperComponent>
   );
 };
 
