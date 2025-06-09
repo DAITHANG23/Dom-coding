@@ -9,7 +9,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const MotionGridContainer = motion(Grid2);
+const MotionGridContainer = motion.create(Grid2);
 
 const StyledContainer = styled(MotionGridContainer)(() => ({
   padding: "16px",
@@ -80,7 +80,7 @@ const MyProjects = () => {
   return (
     <WarraperComponent title="Projects" content="Recent Projects">
       <StyledContainer
-        initial={{ opacity: 0, y: -50 }}
+        initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
         viewport={{ once: true }}
