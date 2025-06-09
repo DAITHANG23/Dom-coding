@@ -7,7 +7,7 @@ import { Grid2, styled, Typography } from "@mui/material";
 import React from "react";
 import { motion } from "framer-motion";
 
-const MotionGridItem = motion(Grid2);
+const MotionGridItem = motion.create(Grid2);
 
 const StyledBoxContent = styled(MotionGridItem)(({ theme }) => ({
   backgroundColor: theme.palette.grey[400],
